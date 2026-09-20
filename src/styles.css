@@ -258,6 +258,16 @@ select:focus {
   animation: utility-popover-in 0.38s cubic-bezier(0.22, 1, 0.36, 1) both;
   transform-origin: top right;
 }
+.utility-scrim {
+  background: rgba(16, 11, 6, 0.08);
+  animation: utility-scrim-in 0.42s ease both;
+}
+.utility-scrim-closing {
+  animation: utility-scrim-out 0.42s ease both;
+}
+.utility-popover-closing {
+  animation-name: utility-popover-out;
+}
 .utility-popover-head {
   position: relative;
   z-index: 1;
@@ -296,6 +306,18 @@ select:focus {
   from { opacity: 0; transform: translateY(-8px) scale(0.94); }
   to { opacity: 1; transform: translateY(0) scale(1); }
 }
+@keyframes utility-popover-out {
+  from { opacity: 1; transform: translateY(0) scale(1); }
+  to { opacity: 0; transform: translateY(-14px) scale(0.96); }
+}
+@keyframes utility-scrim-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes utility-scrim-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
 @media (max-width: 767px) {
   .navbar-contrast {
     gap: 0.5rem;
@@ -323,12 +345,16 @@ select:focus {
     left: 0;
     width: 100%;
     border-radius: 0 0 1.8rem 1.8rem;
-    padding: 0.85rem 1rem 0.65rem;
+    padding: 1rem 1.25rem 0.85rem;
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.72), rgba(239, 230, 214, 0.44));
     animation-name: utility-drop-in;
     transform-origin: top center;
   }
+  .utility-popover-closing {
+    animation-name: utility-drop-out;
+  }
   .utility-popover-head {
-    padding-top: 0.85rem;
+    padding: 0.5rem 0.25rem 1rem;
   }
   .utility-drag-handle {
     display: flex;
@@ -346,12 +372,21 @@ select:focus {
     background: rgba(42, 29, 18, 0.24);
   }
   .utility-action {
-    min-height: 3.8rem;
+    min-height: 4.25rem;
+    padding-left: 1.15rem;
+    padding-right: 1.15rem;
+  }
+  .utility-action + .utility-action {
+    border-top: 1px solid rgba(42, 29, 18, 0.08);
   }
 }
 @keyframes utility-drop-in {
   from { opacity: 0; transform: translateY(-24px) scale(0.98); }
   to { opacity: 1; transform: translateY(0); }
+}
+@keyframes utility-drop-out {
+  from { opacity: 1; transform: translateY(0); }
+  to { opacity: 0; transform: translateY(-28px) scale(0.98); }
 }
 .ios-separator {
   border-color: var(--ios-separator);

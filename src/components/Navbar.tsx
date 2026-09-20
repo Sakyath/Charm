@@ -18,6 +18,7 @@ const links = [
 export function Navbar() {
   const [open, setOpen] = useState(false);
   const [utilityOpen, setUtilityOpen] = useState(false);
+  const [utilityClosing, setUtilityClosing] = useState(false);
   const [search, setSearch] = useState(false);
   const [q, setQ] = useState("");
   const { count } = useWishlist();
@@ -36,19 +37,25 @@ export function Navbar() {
   }, []);
 
   useEffect(() => {
-    document.body.style.overflow = open || search || utilityOpen ? "hidden" : "";
+    document.body.style.overflow = open || search || utilityOpen || utilityClosing ? "hidden" : "";
     return () => {
       document.body.style.overflow = "";
     };
-  }, [open, search, utilityOpen]);
+  }, [open, search, utilityOpen, utilityClosing]);
+
+  useEffect(() => {
+    if (!utilityClosing) return;
+    const timeout = window.setTimeout(() => setUtilityClosing(false), 420);
+    return () => window.clearTimeout(timeout);
+  }, [utilityClosing]);
 
   useEffect(() => {
     if (!utilityOpen) return;
 
     window.history.pushState({ charmelleUtility: true }, "", window.location.href);
-    const onPopState = () => setUtilityOpen(false);
+    const onPopState = () => closeUtility(false);
     const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setUtilityOpen(false);
+      if (event.key === "Escape") closeUtility();
     };
     window.addEventListener("popstate", onPopState);
     window.addEventListener("keydown", onKeyDown);
@@ -58,9 +65,15 @@ export function Navbar() {
     };
   }, [utilityOpen]);
 
-  const closeUtility = () => {
+  const openUtility = () => {
+    setUtilityClosing(false);
+    setUtilityOpen(true);
+  };
+
+  const closeUtility = (goBack = true) => {
     setUtilityOpen(false);
-    if (window.history.state?.charmelleUtility) window.history.back();
+    setUtilityClosing(true);
+    if (goBack && window.history.state?.charmelleUtility) window.history.back();
   };
 
   return (
@@ -112,7 +125,7 @@ export function Navbar() {
           <div className="relative">
             <button
               type="button"
-              onClick={() => setUtilityOpen((value) => !value)}
+              onClick={() => (utilityOpen ? closeUtility() : openUtility())}
               aria-expanded={utilityOpen}
               aria-haspopup="menu"
               aria-label="Open shopping tools"
@@ -125,16 +138,16 @@ export function Navbar() {
             </button>
 
             {mounted &&
-              utilityOpen &&
+              (utilityOpen || utilityClosing) &&
               createPortal(
                 <>
                 <button
                   type="button"
                   aria-label="Close shopping tools"
-                  className="fixed inset-0 z-40 h-full w-full cursor-default"
+                  className={`utility-scrim fixed inset-0 z-40 h-full w-full cursor-default ${utilityClosing ? "utility-scrim-closing" : ""}`}
                   onClick={closeUtility}
                 />
-                <div className="utility-popover absolute right-0 top-[calc(100%+0.8rem)] z-50 w-64 overflow-hidden rounded-[1.35rem] p-2" role="menu">
+                <div className={`utility-popover absolute right-0 top-[calc(100%+0.8rem)] z-50 w-64 overflow-hidden rounded-[1.35rem] p-2 ${utilityClosing ? "utility-popover-closing" : ""}`} role="menu">
                   <div className="utility-popover-head flex items-center justify-between px-3 pb-2 pt-2">
                     <div>
                       <p className="font-display text-lg leading-none text-espresso">Little rituals</p>
