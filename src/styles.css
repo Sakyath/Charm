@@ -87,6 +87,10 @@ button:active,
 a:active {
   transform: scale(0.98);
 }
+button:hover,
+a:hover {
+  transition-duration: 0.35s;
+}
 input,
 textarea,
 select {
@@ -195,6 +199,13 @@ select:focus {
   -webkit-backdrop-filter: blur(20px) saturate(155%);
   backdrop-filter: blur(20px) saturate(155%);
 }
+.ios-nav-glass.nav-scrolled {
+  background: rgba(24, 17, 11, 0.72);
+  border-color: rgba(255, 255, 255, 0.34);
+  box-shadow: 0 14px 36px rgba(16, 11, 6, 0.16), inset 0 -1px 0 rgba(255, 255, 255, 0.2);
+  -webkit-backdrop-filter: blur(28px) saturate(175%);
+  backdrop-filter: blur(28px) saturate(175%);
+}
 .navbar-contrast {
   color: var(--ivory);
   mix-blend-mode: difference;
@@ -273,6 +284,114 @@ select:focus {
 }
 .ios-row {
   animation: ios-row-in 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* ---------- Rich interaction surfaces ---------- */
+.glass-control,
+.glass-button {
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.55), 0 10px 25px rgba(16, 11, 6, 0.12);
+  -webkit-backdrop-filter: blur(18px) saturate(155%);
+  backdrop-filter: blur(18px) saturate(155%);
+}
+.spotlight {
+  --spot-x: 50%;
+  --spot-y: 50%;
+  position: relative;
+}
+.spotlight::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  border-radius: inherit;
+  opacity: 0;
+  background: radial-gradient(circle 180px at var(--spot-x) var(--spot-y), rgba(231, 211, 168, 0.5), rgba(231, 211, 168, 0.12) 35%, transparent 72%);
+  mix-blend-mode: screen;
+  transition: opacity 0.45s ease;
+}
+.spotlight:hover::after {
+  opacity: 1;
+}
+.spotlight-action {
+  position: relative;
+  z-index: 3;
+  background: rgba(255, 255, 255, 0.48);
+}
+.spotlight-action::after {
+  z-index: -1;
+  background: radial-gradient(circle 90px at var(--spot-x) var(--spot-y), rgba(194, 162, 91, 0.52), transparent 72%);
+}
+.glass-control {
+  background: rgba(255, 255, 255, 0.72);
+}
+.glass-button {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.45s ease, background-color 0.45s ease;
+}
+.glass-button::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, transparent 25%, rgba(255, 255, 255, 0.28) 48%, transparent 70%);
+  transform: translateX(-120%);
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.glass-button:hover {
+  transform: translateY(-3px);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.65), 0 18px 35px rgba(16, 11, 6, 0.2);
+}
+.glass-button:hover::after {
+  transform: translateX(120%);
+}
+.product-zoom {
+  cursor: zoom-in;
+}
+.product-zoom img {
+  transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1), filter 0.8s ease;
+}
+.product-zoom:hover img {
+  transform: scale(1.1);
+  filter: saturate(1.05) contrast(1.02);
+}
+.heart-pop {
+  animation: heart-pop 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.charm-option {
+  transform: translateZ(0);
+}
+.charm-option.selected {
+  border-color: var(--gold);
+  background: rgba(194, 162, 91, 0.1);
+  animation: charm-select 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.toaster [data-sonner-toast] {
+  border: 1px solid rgba(255, 255, 255, 0.52) !important;
+  border-radius: 1rem !important;
+  background: rgba(248, 248, 246, 0.78) !important;
+  color: var(--espresso) !important;
+  box-shadow: 0 20px 50px rgba(16, 11, 6, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.7) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(155%);
+  backdrop-filter: blur(24px) saturate(155%);
+}
+@keyframes heart-pop {
+  0% { transform: scale(1); }
+  45% { transform: scale(1.25) rotate(-8deg); }
+  100% { transform: scale(1); }
+}
+@keyframes charm-select {
+  0% { transform: scale(0.96); }
+  65% { transform: scale(1.025); }
+  100% { transform: scale(1); }
+}
+main {
+  animation: page-enter 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@keyframes page-enter {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 /* ---------- Scrollbar ---------- */

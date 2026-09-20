@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { Link } from "@tanstack/react-router";
-import { Menu, Search, Heart, X, ChevronRight } from "lucide-react";
+import { Menu, Search, Heart, X, ChevronRight, ShoppingBag } from "lucide-react";
 import { useWishlist } from "@/hooks/use-wishlist";
 import { GENERAL_WHATSAPP_LINK } from "@/lib/whatsapp";
 import { WHATSAPP_DISPLAY } from "@/data/products";
+import { useCart } from "@/hooks/use-cart";
 
 const links = [
   { to: "/shop", label: "Shop" },
@@ -19,9 +20,18 @@ export function Navbar() {
   const [search, setSearch] = useState(false);
   const [q, setQ] = useState("");
   const { count } = useWishlist();
+  const { count: cartCount } = useCart();
   const [mounted, setMounted] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => setMounted(true), []);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 18);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   useEffect(() => {
     document.body.style.overflow = open || search ? "hidden" : "";
@@ -31,7 +41,7 @@ export function Navbar() {
   }, [open, search]);
 
   return (
-    <header className="ios-nav-glass sticky top-0 z-50 rounded-none border-b">
+    <header className={`ios-nav-glass sticky top-0 z-50 rounded-none border-b transition-all duration-500 ${scrolled ? "nav-scrolled" : ""}`}>
       <div className="navbar-contrast mx-auto flex max-w-[1500px] items-center justify-between px-5 py-4 md:px-10">
         {/* Left: mobile menu */}
         <button
@@ -89,6 +99,14 @@ export function Navbar() {
             {count > 0 && (
               <span className="absolute -right-2 -top-2 flex h-4 w-4 items-center justify-center rounded-full bg-gold font-sans text-[0.5rem] text-ivory">
                 {count}
+              </span>
+            )}
+          </Link>
+          <Link to="/cart" aria-label="Shopping bag" className="relative text-inherit">
+            <ShoppingBag className="h-5 w-5" strokeWidth={1.3} />
+            {cartCount > 0 && (
+              <span className="absolute -right-2 -top-2 flex h-4 w-4 items-center justify-center rounded-full bg-gold font-sans text-[0.5rem] text-ivory">
+                {cartCount}
               </span>
             )}
           </Link>

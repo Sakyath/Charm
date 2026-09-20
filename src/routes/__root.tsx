@@ -4,6 +4,7 @@ import {
   Link,
   createRootRouteWithContext,
   useRouter,
+  useRouterState,
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
@@ -14,6 +15,7 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { FloatingWhatsApp } from "@/components/FloatingWhatsApp";
+import { Toaster } from "@/components/ui/sonner";
 
 const orgJsonLd = {
   "@context": "https://schema.org",
@@ -118,13 +120,15 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const pathname = useRouterState({ select: (state) => state.location.pathname });
 
   return (
     <QueryClientProvider client={queryClient}>
       <Navbar />
-      <main>
+      <main key={pathname}>
         <Outlet />
       </main>
+      <Toaster position="bottom-right" />
       <Footer />
       <FloatingWhatsApp />
     </QueryClientProvider>

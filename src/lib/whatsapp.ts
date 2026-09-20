@@ -1,4 +1,4 @@
-import { WHATSAPP_NUMBER, type Product, customCharms } from "@/data/products";
+import { WHATSAPP_NUMBER, type Product, customCharms, formatPrice } from "@/data/products";
 
 function buildLink(message: string): string {
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
@@ -12,6 +12,24 @@ export function createWhatsAppOrderLink(product: Product): string {
     `• ${product.name}`,
     ``,
     `Could you share availability and next steps?`,
+  ].join("\n");
+  return buildLink(message);
+}
+
+export function createWhatsAppCartOrderLink(items: Array<{ product: Product; quantity: number }>): string {
+  const lines = items.map(
+    ({ product, quantity }) => `• ${product.name} x${quantity} — ${formatPrice(product.price * quantity)}`,
+  );
+  const total = items.reduce((sum, { product, quantity }) => sum + product.price * quantity, 0);
+  const message = [
+    `Hi Charmelle! 💛`,
+    ``,
+    `I'd like to place an order for:`,
+    ...lines,
+    ``,
+    `Total: ${formatPrice(total)}`,
+    ``,
+    `Could you confirm availability and share the next steps?`,
   ].join("\n");
   return buildLink(message);
 }

@@ -1,8 +1,10 @@
 import { useEffect } from "react";
 import { Link } from "@tanstack/react-router";
-import { X } from "lucide-react";
+import { X, ShoppingBag } from "lucide-react";
 import { formatPrice, type Product } from "@/data/products";
 import { createWhatsAppOrderLink } from "@/lib/whatsapp";
+import { useCart } from "@/hooks/use-cart";
+import { toast } from "sonner";
 
 type Props = {
   product: Product | null;
@@ -25,6 +27,7 @@ export function QuickView({ product, onClose }: Props) {
 
   if (!product) return null;
   const img = product.images[0] ?? "";
+  const { add } = useCart();
 
   return (
     <div className="fixed inset-0 z-[70] flex items-center justify-center bg-ink/60 p-4 backdrop-blur-sm" onClick={onClose}>
@@ -39,7 +42,7 @@ export function QuickView({ product, onClose }: Props) {
           <X className="h-4 w-4 text-espresso" strokeWidth={1.2} />
         </button>
 
-        <div className="aspect-square overflow-hidden bg-cream md:aspect-auto">
+        <div className="product-zoom aspect-square overflow-hidden bg-cream md:aspect-auto">
           <img src={img} alt={product.alt} className="h-full w-full object-cover" />
         </div>
 
@@ -48,6 +51,9 @@ export function QuickView({ product, onClose }: Props) {
           <p className="mt-2 font-sans text-lg font-light text-wood">{formatPrice(product.price)}</p>
           <p className="mt-4 font-sans text-sm font-light leading-relaxed text-stone">{product.description}</p>
           <div className="mt-6 flex flex-col gap-3">
+            <button type="button" onClick={() => { add(product.slug); toast.success("Added to your bag", { description: product.name }); }} className="glass-button flex items-center justify-center gap-2 bg-espresso py-3.5 font-sans text-[0.65rem] uppercase tracking-[0.3em] text-ivory">
+              <ShoppingBag className="h-4 w-4" strokeWidth={1.4} /> Add to bag
+            </button>
             <a href={createWhatsAppOrderLink(product)} target="_blank" rel="noreferrer" className="bg-espresso py-3.5 text-center font-sans text-[0.65rem] uppercase tracking-[0.3em] text-ivory transition-colors hover:bg-charcoal">
               Order Now
             </a>

@@ -2,13 +2,18 @@ import { useState } from "react";
 import { customCharms, BRACELET_BASE_PRICE, formatPrice } from "@/data/products";
 import { createWhatsAppCustomLink } from "@/lib/whatsapp";
 import { Reveal } from "@/components/Reveal";
+import { toast } from "sonner";
 
 export function CustomizationBuilder() {
   const [selected, setSelected] = useState<string[]>(["butterfly", "heart"]);
   const [initial, setInitial] = useState("");
 
   const toggle = (id: string) => {
-    setSelected((prev) => (prev.includes(id) ? prev.filter((c) => c !== id) : prev.length < 5 ? [...prev, id] : prev));
+    setSelected((prev) => {
+      const next = prev.includes(id) ? prev.filter((c) => c !== id) : prev.length < 5 ? [...prev, id] : prev;
+      if (next.length !== prev.length) toast(next.includes(id) ? "Charm added" : "Charm removed", { description: customCharms.find((charm) => charm.id === id)?.name });
+      return next;
+    });
   };
 
   const estimate =
@@ -77,7 +82,7 @@ export function CustomizationBuilder() {
                     type="button"
                     onClick={() => toggle(charm.id)}
                     aria-pressed={isSel}
-                    className={`border p-4 text-left transition-all ${isSel ? "border-gold bg-gold/10" : "border-champagne/15 hover:border-champagne/40"}`}
+                    className={`charm-option border p-4 text-left transition-all ${isSel ? "selected" : "border-champagne/15 hover:border-champagne/40"}`}
                   >
                     <p className="font-display text-xl text-ivory">{charm.name}</p>
                     <p className="mt-1 font-sans text-[0.65rem] text-ivory/50">{charm.meaning}</p>

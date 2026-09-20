@@ -1,9 +1,11 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
-import { Heart, ChevronLeft } from "lucide-react";
+import { Heart, ChevronLeft, ShoppingBag } from "lucide-react";
 import { productBySlug, products, formatPrice } from "@/data/products";
 import { createWhatsAppOrderLink } from "@/lib/whatsapp";
 import { useWishlist } from "@/hooks/use-wishlist";
 import { Reveal } from "@/components/Reveal";
+import { useCart } from "@/hooks/use-cart";
+import { toast } from "sonner";
 
 export const Route = createFileRoute("/product/$slug")({
   head: ({ params }) => {
@@ -25,6 +27,7 @@ function ProductComponent() {
   const product = productBySlug(slug);
   const { has, toggle } = useWishlist();
   const navigate = useNavigate();
+  const { add } = useCart();
 
   if (!product) {
     return (
@@ -51,7 +54,7 @@ function ProductComponent() {
 
       <div className="mx-auto grid max-w-[1400px] gap-12 px-5 py-10 md:grid-cols-2 md:px-10 md:py-16 md:gap-16">
         <div>
-          <div className="overflow-hidden bg-cream">
+          <div className="product-zoom overflow-hidden bg-cream">
             <img src={img} alt={product.alt} className="aspect-[4/5] w-full object-cover" />
           </div>
         </div>
@@ -71,10 +74,13 @@ function ProductComponent() {
           </ul>
 
           <div className="mt-8 flex gap-3">
+            <button type="button" onClick={() => { add(product.slug); toast.success("Added to your bag", { description: product.name }); }} className="glass-button flex flex-1 items-center justify-center gap-2 bg-espresso py-4 text-center font-sans text-[0.65rem] uppercase tracking-[0.3em] text-ivory">
+              <ShoppingBag className="h-4 w-4" strokeWidth={1.4} /> Add to bag
+            </button>
             <a href={createWhatsAppOrderLink(product)} target="_blank" rel="noreferrer" className="flex-1 bg-espresso py-4 text-center font-sans text-[0.65rem] uppercase tracking-[0.3em] text-ivory transition-colors hover:bg-charcoal">
               Order Now
             </a>
-            <button onClick={() => toggle(product.slug)} aria-pressed={wished} className="border border-espresso/20 px-5 transition-colors hover:bg-cream">
+            <button onClick={() => { toggle(product.slug); toast(wished ? "Removed from your wishlist" : "Saved to your wishlist", { description: product.name }); }} aria-pressed={wished} className={`border border-espresso/20 px-5 transition-colors hover:bg-cream ${wished ? "heart-pop" : ""}`}>
               <Heart className={`h-5 w-5 ${wished ? "fill-gold text-gold" : "text-espresso"}`} strokeWidth={1.2} />
             </button>
           </div>
