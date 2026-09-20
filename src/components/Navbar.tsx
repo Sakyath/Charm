@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { Link } from "@tanstack/react-router";
-import { Menu, Search, Heart, X, ChevronRight, ShoppingBag } from "lucide-react";
+import { Menu, Search, Heart, X, ChevronRight, ShoppingBag, Sparkles } from "lucide-react";
 import { useWishlist } from "@/hooks/use-wishlist";
 import { GENERAL_WHATSAPP_LINK } from "@/lib/whatsapp";
 import { WHATSAPP_DISPLAY } from "@/data/products";
@@ -17,12 +17,14 @@ const links = [
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
+  const [utilityOpen, setUtilityOpen] = useState(false);
   const [search, setSearch] = useState(false);
   const [q, setQ] = useState("");
   const { count } = useWishlist();
   const { count: cartCount } = useCart();
   const [mounted, setMounted] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const utilityDragStart = useRef<number | null>(null);
 
   useEffect(() => setMounted(true), []);
 
@@ -34,11 +36,32 @@ export function Navbar() {
   }, []);
 
   useEffect(() => {
-    document.body.style.overflow = open || search ? "hidden" : "";
+    document.body.style.overflow = open || search || utilityOpen ? "hidden" : "";
     return () => {
       document.body.style.overflow = "";
     };
-  }, [open, search]);
+  }, [open, search, utilityOpen]);
+
+  useEffect(() => {
+    if (!utilityOpen) return;
+
+    window.history.pushState({ charmelleUtility: true }, "", window.location.href);
+    const onPopState = () => setUtilityOpen(false);
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setUtilityOpen(false);
+    };
+    window.addEventListener("popstate", onPopState);
+    window.addEventListener("keydown", onKeyDown);
+    return () => {
+      window.removeEventListener("popstate", onPopState);
+      window.removeEventListener("keydown", onKeyDown);
+    };
+  }, [utilityOpen]);
+
+  const closeUtility = () => {
+    setUtilityOpen(false);
+    if (window.history.state?.charmelleUtility) window.history.back();
+  };
 
   return (
     <header className={`ios-nav-glass sticky top-0 z-50 rounded-none border-b transition-all duration-500 ${scrolled ? "nav-scrolled" : ""}`}>
@@ -86,30 +109,98 @@ export function Navbar() {
               </Link>
             ))}
           </nav>
-          <button
-            type="button"
-            onClick={() => setSearch(true)}
-            aria-label="Search"
-            className="text-inherit"
-          >
-            <Search className="h-5 w-5 text-inherit" strokeWidth={1.3} />
-          </button>
-          <Link to="/wishlist" aria-label="Wishlist" className="relative text-inherit">
-            <Heart className="h-5 w-5 text-inherit" strokeWidth={1.3} />
-            {count > 0 && (
-              <span className="absolute -right-2 -top-2 flex h-4 w-4 items-center justify-center rounded-full bg-gold font-sans text-[0.5rem] text-ivory">
-                {count}
-              </span>
-            )}
-          </Link>
-          <Link to="/cart" aria-label="Shopping bag" className="relative text-inherit">
-            <ShoppingBag className="h-5 w-5" strokeWidth={1.3} />
-            {cartCount > 0 && (
-              <span className="absolute -right-2 -top-2 flex h-4 w-4 items-center justify-center rounded-full bg-gold font-sans text-[0.5rem] text-ivory">
-                {cartCount}
-              </span>
-            )}
-          </Link>
+          <div className="relative">
+            <button
+              type="button"
+              onClick={() => setUtilityOpen((value) => !value)}
+              aria-expanded={utilityOpen}
+              aria-haspopup="menu"
+              aria-label="Open shopping tools"
+              className={`utility-capsule flex items-center gap-1 rounded-full px-2 py-1.5 text-inherit transition-all duration-300 ${utilityOpen ? "utility-capsule-active" : ""}`}
+            >
+              <span className="utility-capsule-icon"><Search className="h-3.5 w-3.5" strokeWidth={1.5} /></span>
+              <span className="utility-capsule-icon"><Heart className="h-3.5 w-3.5" strokeWidth={1.5} /></span>
+              <span className="utility-capsule-icon"><ShoppingBag className="h-3.5 w-3.5" strokeWidth={1.5} /></span>
+              {(count > 0 || cartCount > 0) && <span className="ml-0.5 h-1.5 w-1.5 rounded-full bg-gold" />}
+            </button>
+
+            {mounted &&
+              utilityOpen &&
+              createPortal(
+                <>
+                <button
+                  type="button"
+                  aria-label="Close shopping tools"
+                  className="fixed inset-0 z-40 h-full w-full cursor-default"
+                  onClick={closeUtility}
+                />
+                <div className="utility-popover absolute right-0 top-[calc(100%+0.8rem)] z-50 w-64 overflow-hidden rounded-[1.35rem] p-2" role="menu">
+                  <div className="utility-popover-head flex items-center justify-between px-3 pb-2 pt-2">
+                    <div>
+                      <p className="font-display text-lg leading-none text-espresso">Little rituals</p>
+                      <p className="mt-1 font-sans text-[0.58rem] uppercase tracking-[0.18em] text-stone">Your essentials</p>
+                    </div>
+                    <span className="utility-sparkle" aria-hidden="true"><Sparkles className="h-3.5 w-3.5" strokeWidth={1.4} /></span>
+                  </div>
+                  <button
+                    type="button"
+                    role="menuitem"
+                    className="utility-action flex w-full items-center gap-3 rounded-[1rem] px-4 py-3 text-left text-espresso"
+                    onClick={() => {
+                      closeUtility();
+                      setSearch(true);
+                    }}
+                  >
+                    <Search className="h-4 w-4 text-gold" strokeWidth={1.4} />
+                    <span className="flex-1 font-sans text-sm">Search the collection</span>
+                    <ChevronRight className="h-4 w-4 text-stone/60" strokeWidth={1.4} />
+                  </button>
+                  <Link
+                    to="/wishlist"
+                    role="menuitem"
+                    onClick={closeUtility}
+                    className="utility-action flex items-center gap-3 rounded-[1rem] px-4 py-3 text-espresso"
+                  >
+                    <Heart className="h-4 w-4 text-gold" strokeWidth={1.4} />
+                    <span className="flex-1 font-sans text-sm">Wishlist</span>
+                    {count > 0 && <span className="font-sans text-xs text-stone">{count}</span>}
+                    <ChevronRight className="h-4 w-4 text-stone/60" strokeWidth={1.4} />
+                  </Link>
+                  <Link
+                    to="/cart"
+                    role="menuitem"
+                    onClick={closeUtility}
+                    className="utility-action flex items-center gap-3 rounded-[1rem] px-4 py-3 text-espresso"
+                  >
+                    <ShoppingBag className="h-4 w-4 text-gold" strokeWidth={1.4} />
+                    <span className="flex-1 font-sans text-sm">Your bag</span>
+                    {cartCount > 0 && <span className="font-sans text-xs text-stone">{cartCount}</span>}
+                    <ChevronRight className="h-4 w-4 text-stone/60" strokeWidth={1.4} />
+                  </Link>
+                  <div
+                    className="utility-drag-handle"
+                    onPointerDown={(event) => {
+                      utilityDragStart.current = event.clientY;
+                      event.currentTarget.setPointerCapture(event.pointerId);
+                    }}
+                    onPointerMove={(event) => {
+                      if (utilityDragStart.current !== null && utilityDragStart.current - event.clientY > 56) {
+                        closeUtility();
+                        utilityDragStart.current = null;
+                      }
+                    }}
+                    onPointerUp={() => {
+                      utilityDragStart.current = null;
+                    }}
+                    role="presentation"
+                  >
+                    <span />
+                  </div>
+                </div>
+                </>,
+                document.body,
+              )}
+          </div>
         </div>
       </div>
 
