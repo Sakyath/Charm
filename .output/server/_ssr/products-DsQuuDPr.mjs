@@ -1,0 +1,305 @@
+//#region node_modules/.nitro/vite/services/ssr/assets/products-DsQuuDPr.js
+var CATEGORIES = [
+	"All",
+	"Bracelets",
+	"Charms",
+	"Necklaces",
+	"Gifts"
+];
+var WHATSAPP_NUMBER = "916300790881";
+var WHATSAPP_DISPLAY = "+91 63007 90881";
+var INSTAGRAM_HANDLE = "@charmelle.jewellery";
+var INSTAGRAM_URL = "https://instagram.com/charmelle.jewellery";
+var BRACELET_BASE_PRICE = 2400;
+var COLLECTIONS = {
+	charms: {
+		name: "Charm Bracelets",
+		blurb: "Stories you can wear.",
+		image: "/images/product-01.jpg"
+	},
+	beaded: {
+		name: "Beaded Bracelets",
+		blurb: "Everyday elegance.",
+		image: "/images/product-03.jpg"
+	},
+	necklaces: {
+		name: "Necklaces",
+		blurb: "Close to the heart.",
+		image: "/images/product-07.jpg"
+	},
+	gifts: {
+		name: "Gifts",
+		blurb: "For someone you love.",
+		image: "/images/product-08.jpg"
+	},
+	new: {
+		name: "New Arrivals",
+		blurb: "Just crafted.",
+		image: "/images/product-02.jpg"
+	}
+};
+var products = [
+	{
+		slug: "the-memory-keeper",
+		name: "The Memory Keeper",
+		description: "A hand-assembled charm bracelet with butterfly, heart and key charms — for the moments you never want to forget.",
+		price: 6e3,
+		images: ["/images/product-01.jpg", "/images/product-02.jpg"],
+		alt: "The Memory Keeper charm bracelet on ivory linen",
+		category: "Bracelets",
+		collections: ["charms", "new"],
+		featured: true,
+		customisable: true,
+		details: [
+			"Gold-tone brass base",
+			"Hand-set resin charms",
+			"Adjustable 16–20 cm",
+			"Made to order in 5 days"
+		]
+	},
+	{
+		slug: "little-wonders",
+		name: "Little Wonders",
+		description: "Delicate beaded bracelet in champagne and blush tones. Made to be layered, worn, and loved.",
+		price: 6e3,
+		images: ["/images/product-03.jpg"],
+		alt: "Little Wonders beaded bracelet in champagne tones",
+		category: "Bracelets",
+		collections: ["beaded"],
+		featured: true,
+		customisable: false,
+		details: [
+			"Glass & resin beads",
+			"Elastic fit",
+			"One size",
+			"Ready to ship"
+		]
+	},
+	{
+		slug: "heart-of-gold",
+		name: "Heart of Gold",
+		description: "A single gold heart charm on a fine chain. Quiet, meaningful, and entirely yours.",
+		price: 6e3,
+		images: ["/images/product-04.jpg"],
+		alt: "Heart of Gold single charm bracelet",
+		category: "Charms",
+		collections: ["charms"],
+		featured: false,
+		customisable: true,
+		details: [
+			"Gold-tone brass",
+			"Lobster clasp",
+			"Adjustable 15–18 cm",
+			"Made to order"
+		]
+	},
+	{
+		slug: "forever-necklace",
+		name: "Forever Necklace",
+		description: "A single charm on a fine gold chain. The piece that stays close to your heart.",
+		price: 6e3,
+		images: ["/images/product-07.jpg"],
+		alt: "Forever Necklace with single charm",
+		category: "Necklaces",
+		collections: ["necklaces"],
+		featured: false,
+		customisable: false,
+		details: [
+			"Gold-tone brass",
+			"42 cm + 5 cm extender",
+			"Lobster clasp",
+			"Ready to ship"
+		]
+	},
+	{
+		slug: "the-gift-set",
+		name: "The Gift Set",
+		description: "A charm bracelet, keepsake pouch and handwritten note. For someone you love.",
+		price: 6e3,
+		images: ["/images/product-08.jpg"],
+		alt: "The Gift Set with charm bracelet and pouch",
+		category: "Gifts",
+		collections: ["gifts"],
+		featured: true,
+		customisable: true,
+		details: [
+			"Charm bracelet included",
+			"Linen keepsake pouch",
+			"Handwritten note",
+			"Gift-wrapped"
+		]
+	},
+	{
+		slug: "black-clover",
+		name: "Black Clover",
+		description: "A sleek bracelet finished with black clover charms for a bold little touch of luck.",
+		price: 2e4,
+		images: ["/images/black-clover.jpg"],
+		alt: "Black Clover charm bracelet on a dark background",
+		category: "Bracelets",
+		collections: ["charms", "new"],
+		featured: true,
+		customisable: false,
+		details: [
+			"Gold-tone brass base",
+			"Black clover charms",
+			"Adjustable 16–20 cm",
+			"Ready to ship"
+		]
+	},
+	{
+		slug: "couple-bracelet",
+		name: "Couple Bracelet",
+		description: "A matching bracelet set made to hold two stories close, wherever the day takes you.",
+		price: 35e3,
+		images: ["/images/couple-bracelet.jpg"],
+		alt: "Matching couple bracelets styled together",
+		category: "Bracelets",
+		collections: [
+			"beaded",
+			"gifts",
+			"new"
+		],
+		featured: true,
+		customisable: false,
+		details: [
+			"Matching bracelet pair",
+			"Comfortable stretch fit",
+			"One size",
+			"Ready to ship"
+		]
+	}
+];
+function productBySlug(slug) {
+	return products.find((p) => p.slug === slug);
+}
+var customCharms = [
+	{
+		id: "butterfly",
+		name: "Butterfly",
+		meaning: "for change",
+		price: 1e3
+	},
+	{
+		id: "heart",
+		name: "Heart",
+		meaning: "for love",
+		price: 1e3
+	},
+	{
+		id: "key",
+		name: "Key",
+		meaning: "for beginnings",
+		price: 1e3
+	},
+	{
+		id: "star",
+		name: "Star",
+		meaning: "for dreams",
+		price: 1e3
+	},
+	{
+		id: "moon",
+		name: "Moon",
+		meaning: "for intuition",
+		price: 1e3
+	},
+	{
+		id: "flower",
+		name: "Flower",
+		meaning: "for growth",
+		price: 1e3
+	},
+	{
+		id: "compass",
+		name: "Compass",
+		meaning: "for travel",
+		price: 1e3
+	},
+	{
+		id: "initial",
+		name: "Initial",
+		meaning: "for you",
+		price: 1e3
+	},
+	{
+		id: "infinity",
+		name: "Infinity",
+		meaning: "for forever",
+		price: 1e3
+	},
+	{
+		id: "feather",
+		name: "Feather",
+		meaning: "for freedom",
+		price: 1e3
+	}
+];
+var testimonials = [
+	{
+		name: "Ananya R.",
+		text: "My bracelet arrived wrapped like a gift to myself. The charms feel weighty and real — not costume at all.",
+		location: "Mumbai"
+	},
+	{
+		name: "Priya M.",
+		text: "I built a bracelet with charms from each city I've lived in. It's the most personal thing I own.",
+		location: "Bengaluru"
+	},
+	{
+		name: "Sara K.",
+		text: "Ordered on WhatsApp and it was effortless. The handwritten note made me cry a little.",
+		location: "Delhi"
+	}
+];
+var giftCategories = [
+	{
+		name: "For Her",
+		blurb: "The piece she'll wear every day.",
+		image: "/images/gift-01.jpg",
+		price: "from ₹1,650"
+	},
+	{
+		name: "For a Friend",
+		blurb: "A charm for your shared story.",
+		image: "/images/gift-02.jpg",
+		price: "from ₹1,800"
+	},
+	{
+		name: "For You",
+		blurb: "Because you earned it.",
+		image: "/images/gift-03.jpg",
+		price: "from ₹1,450"
+	}
+];
+var galleryImages = [
+	{
+		src: "/images/gallery-01.jpg",
+		alt: "Charm bracelet styled on linen"
+	},
+	{
+		src: "/images/gallery-02.jpg",
+		alt: "Detail of gold heart charm"
+	},
+	{
+		src: "/images/gallery-03.jpg",
+		alt: "Stacked charm and beaded bracelets"
+	},
+	{
+		src: "/images/gallery-04.jpg",
+		alt: "Charm bracelet on wrist in warm light"
+	},
+	{
+		src: "/images/gallery-05.jpg",
+		alt: "Custom initial charm detail"
+	},
+	{
+		src: "/images/gallery-06.jpg",
+		alt: "Gift set with pouch and note"
+	}
+];
+function formatPrice(paise) {
+	return `₹${(paise / 100).toLocaleString("en-IN", { minimumFractionDigits: 0 })}`;
+}
+//#endregion
+export { INSTAGRAM_URL as a, customCharms as c, giftCategories as d, productBySlug as f, INSTAGRAM_HANDLE as i, formatPrice as l, testimonials as m, CATEGORIES as n, WHATSAPP_DISPLAY as o, products as p, COLLECTIONS as r, WHATSAPP_NUMBER as s, BRACELET_BASE_PRICE as t, galleryImages as u };

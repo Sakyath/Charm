@@ -1,0 +1,6 @@
+import{c as e,l as t,s as n}from"./products-CioCA-yv.js";function r(e){return`https://wa.me/${n}?text=${encodeURIComponent(e)}`}function i(e){return r([`Hi Charmelle! 💛`,``,`I'd like to order:`,`• ${e.name}`,``,`Could you share availability and next steps?`].join(`
+`))}function a(e){let n=e.map(({product:e,quantity:n})=>`• ${e.name} x${n} — ${t(e.price*n)}`),i=e.reduce((e,{product:t,quantity:n})=>e+t.price*n,0);return r([`Hi Charmelle! 💛`,``,`I'd like to place an order for:`,...n,``,`Total: ${t(i)}`,``,`Could you confirm availability and share the next steps?`].join(`
+`))}function o(t,n,i){let a=[`Hi Charmelle! 💛`,``,`I'd like to create a custom charm bracelet.`,`Charms: ${t.map(t=>e.find(e=>e.id===t)?.name??t).join(`, `)||`none yet`}`];return i&&a.push(`Initial: ${i.toUpperCase()}`),a.push(`Estimated price: ₹${(n/100).toLocaleString(`en-IN`)}`),a.push(``,`Could you confirm and take it from here?`),r(a.join(`
+`))}function s(e){return r(`Hi Charmelle! 💛\n\n${e}`)}var c=r(`Hi Charmelle! 💛
+
+I'd love to know more about your charm jewellery.`);export{i as a,s as i,a as n,o as r,c as t};
