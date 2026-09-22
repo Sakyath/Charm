@@ -11,17 +11,25 @@ export function AboutSection() {
           </Reveal>
           <Reveal delay={140}>
             <p className="body-lg mt-8 max-w-md text-gold">
-              Charmelle began at a kitchen table with a single charm and a lot of patience. We believe jewellery should feel like a memory you can hold — not just something you wear.
+              Charmelle began at a kitchen table with a single charm and a lot of patience. We
+              believe jewellery should feel like a memory you can hold — not just something you
+              wear.
             </p>
           </Reveal>
           <Reveal delay={240}>
             <p className="body-lg mt-6 max-w-md text-gold">
-              Each piece is assembled by hand, finished by hand, and wrapped by hand. Slow, deliberate, and made to be kept.
+              Each piece is assembled by hand, finished by hand, and wrapped by hand. Slow,
+              deliberate, and made to be kept.
             </p>
           </Reveal>
         </div>
         <Reveal parallax={30}>
-          <img src="/images/about-01.jpg" alt="Hands assembling a charm bracelet at a workbench" loading="lazy" className="aspect-[4/5] w-full object-cover" />
+          <img
+            src="/images/about-01.jpg"
+            alt="Hands assembling a charm bracelet at a workbench"
+            loading="lazy"
+            className="aspect-[4/5] w-full object-cover"
+          />
         </Reveal>
       </div>
     </section>

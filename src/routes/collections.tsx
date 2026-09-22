@@ -8,7 +8,11 @@ export const Route = createFileRoute("/collections")({
   head: () => ({
     title: "Collections — Charmelle",
     meta: [
-      { name: "description", content: "Browse Charmelle collections — charm bracelets, beaded bracelets, necklaces and gifts." },
+      {
+        name: "description",
+        content:
+          "Browse Charmelle collections — charm bracelets, beaded bracelets, necklaces and gifts.",
+      },
       { property: "og:title", content: "Collections — Charmelle" },
       { property: "og:type", content: "website" },
     ],
@@ -50,7 +54,12 @@ function CollectionsComponent() {
           <Reveal key={p.slug} delay={(i % 4) * 100}>
             <Link to="/product/$slug" params={{ slug: p.slug }} className="group block">
               <div className="overflow-hidden bg-cream">
-                <img src={p.images[0] ?? ""} alt={p.alt} loading="lazy" className="aspect-[4/5] w-full object-cover transition-transform duration-[1200ms] group-hover:scale-[1.05]" />
+                <img
+                  src={p.images[0] ?? ""}
+                  alt={p.alt}
+                  loading="lazy"
+                  className="aspect-[4/5] w-full object-cover transition-transform duration-[1200ms] group-hover:scale-[1.05]"
+                />
               </div>
               <h3 className="mt-4 font-display text-lg text-espresso">{p.name}</h3>
             </Link>

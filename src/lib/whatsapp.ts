@@ -16,9 +16,12 @@ export function createWhatsAppOrderLink(product: Product): string {
   return buildLink(message);
 }
 
-export function createWhatsAppCartOrderLink(items: Array<{ product: Product; quantity: number }>): string {
+export function createWhatsAppCartOrderLink(
+  items: Array<{ product: Product; quantity: number }>,
+): string {
   const lines = items.map(
-    ({ product, quantity }) => `• ${product.name} x${quantity} — ${formatPrice(product.price * quantity)}`,
+    ({ product, quantity }) =>
+      `• ${product.name} x${quantity} — ${formatPrice(product.price * quantity)}`,
   );
   const total = items.reduce((sum, { product, quantity }) => sum + product.price * quantity, 0);
   const message = [
@@ -39,9 +42,7 @@ export function createWhatsAppCustomLink(
   estimatePaise: number,
   initial?: string,
 ): string {
-  const names = charmIds
-    .map((id) => customCharms.find((c) => c.id === id)?.name ?? id)
-    .join(", ");
+  const names = charmIds.map((id) => customCharms.find((c) => c.id === id)?.name ?? id).join(", ");
   const lines = [
     `Hi Charmelle! 💛`,
     ``,

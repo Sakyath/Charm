@@ -14,18 +14,42 @@ export function Footer() {
           <div>
             <p className="eyebrow text-gold">Shop</p>
             <ul className="mt-5 space-y-3 font-sans text-[0.7rem] font-light text-ivory/70">
-              <li><Link to="/shop" className="hover:text-ivory">All pieces</Link></li>
-              <li><Link to="/customise" className="hover:text-ivory">Customise</Link></li>
-              <li><Link to="/collections" search={{ c: "gifts" }} className="hover:text-ivory">Gifts</Link></li>
+              <li>
+                <Link to="/shop" className="hover:text-ivory">
+                  All pieces
+                </Link>
+              </li>
+              <li>
+                <Link to="/customise" className="hover:text-ivory">
+                  Customise
+                </Link>
+              </li>
+              <li>
+                <Link to="/collections" search={{ c: "gifts" }} className="hover:text-ivory">
+                  Gifts
+                </Link>
+              </li>
             </ul>
           </div>
 
           <div>
             <p className="eyebrow text-gold">Brand</p>
             <ul className="mt-5 space-y-3 font-sans text-[0.7rem] font-light text-ivory/70">
-              <li><Link to="/our-story" className="hover:text-ivory">Our story</Link></li>
-              <li><Link to="/journal" className="hover:text-ivory">Journal</Link></li>
-              <li><Link to="/wishlist" className="hover:text-ivory">Wishlist</Link></li>
+              <li>
+                <Link to="/our-story" className="hover:text-ivory">
+                  Our story
+                </Link>
+              </li>
+              <li>
+                <Link to="/journal" className="hover:text-ivory">
+                  Journal
+                </Link>
+              </li>
+              <li>
+                <Link to="/wishlist" className="hover:text-ivory">
+                  Wishlist
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -33,7 +57,16 @@ export function Footer() {
             <p className="eyebrow text-gold">Contact</p>
             <ul className="mt-5 space-y-3 font-sans text-[0.7rem] font-light text-ivory/70">
               <li>WhatsApp: {WHATSAPP_DISPLAY}</li>
-              <li><a href={INSTAGRAM_URL} target="_blank" rel="noreferrer" className="hover:text-ivory">{INSTAGRAM_HANDLE}</a></li>
+              <li>
+                <a
+                  href={INSTAGRAM_URL}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="hover:text-ivory"
+                >
+                  {INSTAGRAM_HANDLE}
+                </a>
+              </li>
             </ul>
           </div>
         </div>

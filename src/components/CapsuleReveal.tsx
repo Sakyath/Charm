@@ -149,16 +149,27 @@ export function CapsuleReveal({
 
         {/* product */}
         <div className="capsule-product absolute inset-8 overflow-hidden rounded-[1.6rem] border border-gold/20 shadow-[0_40px_90px_-40px_rgba(0,0,0,0.9)]">
-          <img src={image} alt={alt} loading="lazy" decoding="async" className="h-full w-full object-cover" />
+          <img
+            src={image}
+            alt={alt}
+            loading="lazy"
+            decoding="async"
+            className="h-full w-full object-cover"
+          />
           <span className="capsule-sweep" aria-hidden="true" />
         </div>
       </div>
 
       {/* glass info panel */}
-      <div hidden={!showInfo} className="capsule-info glass-panel glass-panel-raised mx-auto -mt-8 w-[88%] max-w-sm p-6 text-center">
+      <div
+        hidden={!showInfo}
+        className="capsule-info glass-panel glass-panel-raised mx-auto -mt-8 w-[88%] max-w-sm p-6 text-center"
+      >
         <p className="eyebrow text-gold">{eyebrow}</p>
         <h3 className="font-display mt-3 text-3xl italic text-ivory">{name}</h3>
-        {meaning && <p className="mt-2 font-sans text-[0.8rem] font-light text-ivory/55">{meaning}</p>}
+        {meaning && (
+          <p className="mt-2 font-sans text-[0.8rem] font-light text-ivory/55">{meaning}</p>
+        )}
         {price && <p className="mt-4 font-sans text-sm text-gold">{price}</p>}
         <div className="mt-5 flex flex-col items-center gap-3">
           {href && (

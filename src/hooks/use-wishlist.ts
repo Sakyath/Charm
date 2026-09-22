@@ -37,10 +37,13 @@ export function useWishlist() {
     }
   }, []);
 
-  const toggle = useCallback((slug: string) => {
-    const cur = read();
-    persist(cur.includes(slug) ? cur.filter((s) => s !== slug) : [...cur, slug]);
-  }, [persist]);
+  const toggle = useCallback(
+    (slug: string) => {
+      const cur = read();
+      persist(cur.includes(slug) ? cur.filter((s) => s !== slug) : [...cur, slug]);
+    },
+    [persist],
+  );
 
   const has = useCallback((slug: string) => items.includes(slug), [items]);
 

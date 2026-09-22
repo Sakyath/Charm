@@ -30,7 +30,10 @@ export function QuickView({ product, onClose }: Props) {
   const { add } = useCart();
 
   return (
-    <div className="fixed inset-0 z-[70] flex items-center justify-center bg-ink/60 p-4 backdrop-blur-sm" onClick={onClose}>
+    <div
+      className="fixed inset-0 z-[70] flex items-center justify-center bg-ink/60 p-4 backdrop-blur-sm"
+      onClick={onClose}
+    >
       <div
         className="relative grid max-h-[90vh] w-full max-w-3xl grid-cols-1 overflow-hidden bg-obsidian md:grid-cols-2"
         onClick={(e) => e.stopPropagation()}
@@ -38,7 +41,12 @@ export function QuickView({ product, onClose }: Props) {
         aria-modal="true"
         aria-label={`${product.name} quick view`}
       >
-        <button type="button" onClick={onClose} aria-label="Close quick view" className="absolute right-3 top-3 z-10 rounded-full bg-obsidian/80 p-2 backdrop-blur-sm">
+        <button
+          type="button"
+          onClick={onClose}
+          aria-label="Close quick view"
+          className="absolute right-3 top-3 z-10 rounded-full bg-obsidian/80 p-2 backdrop-blur-sm"
+        >
           <X className="h-4 w-4 text-espresso" strokeWidth={1.2} />
         </button>
 
@@ -48,16 +56,37 @@ export function QuickView({ product, onClose }: Props) {
 
         <div className="flex flex-col justify-center p-6 md:p-8">
           <h2 className="font-display text-2xl text-espresso md:text-3xl">{product.name}</h2>
-          <p className="mt-2 font-sans text-lg font-light text-gold">{formatPrice(product.price)}</p>
-          <p className="mt-4 font-sans text-sm font-light leading-relaxed text-stone">{product.description}</p>
+          <p className="mt-2 font-sans text-lg font-light text-gold">
+            {formatPrice(product.price)}
+          </p>
+          <p className="mt-4 font-sans text-sm font-light leading-relaxed text-stone">
+            {product.description}
+          </p>
           <div className="mt-6 flex flex-col gap-3">
-            <button type="button" onClick={() => { add(product.slug); toast.success("Added to your bag", { description: product.name }); }} className="glass-button flex items-center justify-center gap-2 btn-gold py-3.5 font-sans text-[0.65rem] uppercase tracking-[0.3em]">
+            <button
+              type="button"
+              onClick={() => {
+                add(product.slug);
+                toast.success("Added to your bag", { description: product.name });
+              }}
+              className="glass-button flex items-center justify-center gap-2 btn-gold py-3.5 font-sans text-[0.65rem] uppercase tracking-[0.3em]"
+            >
               <ShoppingBag className="h-4 w-4" strokeWidth={1.4} /> Add to bag
             </button>
-            <a href={createWhatsAppOrderLink(product)} target="_blank" rel="noreferrer" className="btn-gold py-3.5 text-center font-sans text-[0.65rem] uppercase tracking-[0.3em]">
+            <a
+              href={createWhatsAppOrderLink(product)}
+              target="_blank"
+              rel="noreferrer"
+              className="btn-gold py-3.5 text-center font-sans text-[0.65rem] uppercase tracking-[0.3em]"
+            >
               Order Now
             </a>
-            <Link to="/product/$slug" params={{ slug: product.slug }} onClick={onClose} className="border border-espresso/20 py-3.5 text-center font-sans text-[0.65rem] uppercase tracking-[0.3em] text-espresso transition-colors hover:bg-ivory/5">
+            <Link
+              to="/product/$slug"
+              params={{ slug: product.slug }}
+              onClick={onClose}
+              className="border border-espresso/20 py-3.5 text-center font-sans text-[0.65rem] uppercase tracking-[0.3em] text-espresso transition-colors hover:bg-ivory/5"
+            >
               View Details
             </Link>
           </div>

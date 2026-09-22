@@ -9,7 +9,11 @@ export const Route = createFileRoute("/our-story")({
   head: () => ({
     title: "Our Story — Charmelle Handmade Charm Jewellery",
     meta: [
-      { name: "description", content: "Charmelle began at a kitchen table with a single charm. Every piece is assembled, finished and wrapped by hand." },
+      {
+        name: "description",
+        content:
+          "Charmelle began at a kitchen table with a single charm. Every piece is assembled, finished and wrapped by hand.",
+      },
       { property: "og:title", content: "Our Story — Charmelle" },
       { property: "og:type", content: "website" },
     ],

@@ -19,7 +19,10 @@ export function ProductGrid({ query }: Props) {
     if (query) {
       const q = query.toLowerCase();
       result = result.filter(
-        (p) => p.name.toLowerCase().includes(q) || p.description.toLowerCase().includes(q) || p.category.toLowerCase().includes(q),
+        (p) =>
+          p.name.toLowerCase().includes(q) ||
+          p.description.toLowerCase().includes(q) ||
+          p.category.toLowerCase().includes(q),
       );
     }
     if (category !== "All") result = result.filter((p) => p.category === category);
@@ -31,7 +34,10 @@ export function ProductGrid({ query }: Props) {
         result.sort((a, b) => b.price - a.price);
         break;
       case "newest":
-        result.sort((a, b) => (b.collections.includes("new") ? 1 : 0) - (a.collections.includes("new") ? 1 : 0));
+        result.sort(
+          (a, b) =>
+            (b.collections.includes("new") ? 1 : 0) - (a.collections.includes("new") ? 1 : 0),
+        );
         break;
       default:
         result.sort((a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0));
@@ -70,7 +76,9 @@ export function ProductGrid({ query }: Props) {
       </div>
 
       {filtered.length === 0 ? (
-        <p className="py-20 text-center font-sans text-sm font-light text-stone">No pieces found. Try a different search.</p>
+        <p className="py-20 text-center font-sans text-sm font-light text-stone">
+          No pieces found. Try a different search.
+        </p>
       ) : (
         <div className="grid grid-cols-2 gap-x-5 gap-y-14 md:grid-cols-3 md:gap-x-8 lg:grid-cols-4">
           {filtered.map((product) => (

@@ -31,8 +31,13 @@ function WishlistComponent() {
       {saved.length === 0 ? (
         <div className="mx-auto mt-16 max-w-md text-center">
           <Heart className="mx-auto h-10 w-10 text-stone/40" strokeWidth={1} />
-          <p className="mt-6 font-sans text-sm font-light text-stone">No saved pieces yet. Tap the heart on any piece to keep it here.</p>
-          <Link to="/shop" className="mt-8 inline-block hairline-link font-sans text-[0.62rem] uppercase tracking-[0.3em] text-espresso">
+          <p className="mt-6 font-sans text-sm font-light text-stone">
+            No saved pieces yet. Tap the heart on any piece to keep it here.
+          </p>
+          <Link
+            to="/shop"
+            className="mt-8 inline-block hairline-link font-sans text-[0.62rem] uppercase tracking-[0.3em] text-espresso"
+          >
             Browse the collection
           </Link>
         </div>
@@ -43,9 +48,18 @@ function WishlistComponent() {
               <div key={p.slug} className="group">
                 <div className="relative overflow-hidden bg-cream">
                   <Link to="/product/$slug" params={{ slug: p.slug }}>
-                    <img src={p.images[0] ?? ""} alt={p.alt} loading="lazy" className="aspect-[4/5] w-full object-cover" />
+                    <img
+                      src={p.images[0] ?? ""}
+                      alt={p.alt}
+                      loading="lazy"
+                      className="aspect-[4/5] w-full object-cover"
+                    />
                   </Link>
-                  <button onClick={() => toggle(p.slug)} aria-label={`Remove ${p.name}`} className="absolute right-3 top-3 rounded-full bg-obsidian/80 p-2 backdrop-blur-sm">
+                  <button
+                    onClick={() => toggle(p.slug)}
+                    aria-label={`Remove ${p.name}`}
+                    className="absolute right-3 top-3 rounded-full bg-obsidian/80 p-2 backdrop-blur-sm"
+                  >
                     <Heart className="h-4 w-4 fill-gold text-gold" strokeWidth={1.2} />
                   </button>
                 </div>
@@ -55,7 +69,12 @@ function WishlistComponent() {
             ))}
           </div>
           <div className="mt-14 text-center">
-            <a href={createWhatsAppInquiryLink("I'd like to order a few pieces from my wishlist.")} target="_blank" rel="noreferrer" className="inline-block btn-gold px-9 py-4 font-sans text-[0.65rem] uppercase tracking-[0.3em]">
+            <a
+              href={createWhatsAppInquiryLink("I'd like to order a few pieces from my wishlist.")}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-block btn-gold px-9 py-4 font-sans text-[0.65rem] uppercase tracking-[0.3em]"
+            >
               Enquire on WhatsApp
             </a>
           </div>

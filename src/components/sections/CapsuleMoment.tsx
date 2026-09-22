@@ -17,8 +17,8 @@ export function CapsuleMoment() {
             <span className="block italic">A memory arrives.</span>
           </h2>
           <p className="body-lg mt-6 max-w-md">
-            Every Charmelle piece leaves our hands sealed in its own little capsule. Watch it open — warm light,
-            settling glass, and the charm that carries your story.
+            Every Charmelle piece leaves our hands sealed in its own little capsule. Watch it open —
+            warm light, settling glass, and the charm that carries your story.
           </p>
           <div className="gold-rule mt-8 w-16" />
           <ul className="mt-8 space-y-0">
@@ -29,7 +29,9 @@ export function CapsuleMoment() {
             ].map(([n, label]) => (
               <li key={n} className="hairline flex items-center gap-4 border-b py-4">
                 <span className="font-sans text-xs font-medium text-gold">{n}</span>
-                <span className="font-sans text-[0.72rem] uppercase tracking-[0.22em] text-ivory/75">{label}</span>
+                <span className="font-sans text-[0.72rem] uppercase tracking-[0.22em] text-ivory/75">
+                  {label}
+                </span>
               </li>
             ))}
           </ul>

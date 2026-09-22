@@ -17,9 +17,17 @@ export const Route = createFileRoute("/")({
   head: () => ({
     title: "Charmelle — Handmade Charm Jewellery | Little Charms, Big Memories",
     meta: [
-      { name: "description", content: "Handmade charm jewellery made by hand and ordered on WhatsApp. Build your own charm bracelet and wear your memories." },
+      {
+        name: "description",
+        content:
+          "Handmade charm jewellery made by hand and ordered on WhatsApp. Build your own charm bracelet and wear your memories.",
+      },
       { property: "og:title", content: "Charmelle — Handmade Charm Jewellery" },
-      { property: "og:description", content: "Little charms. Big memories. Handmade charm jewellery for the moments you don't want to forget." },
+      {
+        property: "og:description",
+        content:
+          "Little charms. Big memories. Handmade charm jewellery for the moments you don't want to forget.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],

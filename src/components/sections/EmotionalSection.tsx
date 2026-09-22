@@ -8,7 +8,8 @@ export function EmotionalSection() {
         <h2 className="display-lg mt-6 text-espresso">IT'S THE STORY YOU CARRY.</h2>
         <div className="rule-gold mx-auto my-8 w-16" />
         <p className="body-lg text-espresso/70">
-          A charm for the city you left. A heart for the one who stayed. An initial for the person you became. Wear your memories where the world can see them.
+          A charm for the city you left. A heart for the one who stayed. An initial for the person
+          you became. Wear your memories where the world can see them.
         </p>
       </Reveal>
     </section>

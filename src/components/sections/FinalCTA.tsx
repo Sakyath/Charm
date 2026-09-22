@@ -10,10 +10,16 @@ export function FinalCTA() {
         <div className="rule-gold mx-auto my-8 w-16" />
         <p className="body-lg text-ivory/60">Made by hand. Ordered on WhatsApp. Loved for years.</p>
         <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-          <Link to="/shop" className="btn-gold px-9 py-4 font-sans text-[0.65rem] uppercase tracking-[0.3em]">
+          <Link
+            to="/shop"
+            className="btn-gold px-9 py-4 font-sans text-[0.65rem] uppercase tracking-[0.3em]"
+          >
             Shop the collection
           </Link>
-          <Link to="/customise" className="border border-champagne/40 px-9 py-4 font-sans text-[0.65rem] uppercase tracking-[0.3em] text-champagne transition-colors hover:bg-champagne/10">
+          <Link
+            to="/customise"
+            className="border border-champagne/40 px-9 py-4 font-sans text-[0.65rem] uppercase tracking-[0.3em] text-champagne transition-colors hover:bg-champagne/10"
+          >
             Build your own
           </Link>
         </div>

@@ -7,7 +7,11 @@ export const Route = createFileRoute("/shop")({
   head: () => ({
     title: "Shop All — Charmelle Handmade Charm Jewellery",
     meta: [
-      { name: "description", content: "Shop handmade charm bracelets, beaded bracelets and necklaces. Order on WhatsApp." },
+      {
+        name: "description",
+        content:
+          "Shop handmade charm bracelets, beaded bracelets and necklaces. Order on WhatsApp.",
+      },
       { property: "og:title", content: "Shop — Charmelle" },
       { property: "og:type", content: "website" },
     ],

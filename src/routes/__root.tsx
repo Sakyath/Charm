@@ -32,7 +32,10 @@ function NotFoundComponent() {
       <p className="script text-3xl text-gold">Lost a charm?</p>
       <h1 className="display-lg mt-4 text-espresso">404.</h1>
       <p className="body-lg mt-4 text-stone">The page you're looking for doesn't exist.</p>
-      <Link to="/" className="mt-8 hairline-link font-sans text-[0.62rem] uppercase tracking-[0.3em] text-espresso">
+      <Link
+        to="/"
+        className="mt-8 hairline-link font-sans text-[0.62rem] uppercase tracking-[0.3em] text-espresso"
+      >
         Back home
       </Link>
     </div>
@@ -61,7 +64,10 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
         >
           Try again
         </button>
-        <Link to="/" className="border border-espresso/20 px-8 py-3 font-sans text-[0.62rem] uppercase tracking-[0.3em] text-espresso">
+        <Link
+          to="/"
+          className="border border-espresso/20 px-8 py-3 font-sans text-[0.62rem] uppercase tracking-[0.3em] text-espresso"
+        >
           Go home
         </Link>
       </div>
@@ -74,10 +80,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { name: "description", content: "Charmelle — handmade charm jewellery. Little charms, big memories. Order on WhatsApp." },
+      {
+        name: "description",
+        content:
+          "Charmelle — handmade charm jewellery. Little charms, big memories. Order on WhatsApp.",
+      },
       { name: "author", content: "Charmelle" },
       { property: "og:title", content: "Charmelle — Handmade Charm Jewellery" },
-      { property: "og:description", content: "Little charms. Big memories. Handmade charm jewellery for the moments you don't want to forget." },
+      {
+        property: "og:description",
+        content:
+          "Little charms. Big memories. Handmade charm jewellery for the moments you don't want to forget.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],

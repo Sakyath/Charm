@@ -12,15 +12,30 @@ export function InstagramGallery() {
       <div className="mx-auto mt-12 grid max-w-[1400px] grid-cols-2 gap-3 md:grid-cols-3 md:gap-4">
         {galleryImages.map((img, i) => (
           <Reveal key={img.src} delay={(i % 3) * 100}>
-            <a href={INSTAGRAM_URL} target="_blank" rel="noreferrer" className="group block overflow-hidden">
-              <img src={img.src} alt={img.alt} loading="lazy" className="aspect-square w-full object-cover transition-transform duration-[1200ms] group-hover:scale-[1.06]" />
+            <a
+              href={INSTAGRAM_URL}
+              target="_blank"
+              rel="noreferrer"
+              className="group block overflow-hidden"
+            >
+              <img
+                src={img.src}
+                alt={img.alt}
+                loading="lazy"
+                className="aspect-square w-full object-cover transition-transform duration-[1200ms] group-hover:scale-[1.06]"
+              />
             </a>
           </Reveal>
         ))}
       </div>
 
       <div className="mt-12 text-center">
-        <a href={INSTAGRAM_URL} target="_blank" rel="noreferrer" className="hairline-link font-sans text-[0.62rem] uppercase tracking-[0.3em] text-espresso">
+        <a
+          href={INSTAGRAM_URL}
+          target="_blank"
+          rel="noreferrer"
+          className="hairline-link font-sans text-[0.62rem] uppercase tracking-[0.3em] text-espresso"
+        >
           Follow {INSTAGRAM_HANDLE}
         </a>
       </div>

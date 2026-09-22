@@ -21,8 +21,16 @@ export const BRAND_NAME = "Charmelle";
 export const BRACELET_BASE_PRICE = 2400;
 
 export const COLLECTIONS: Record<string, { name: string; blurb: string; image: string }> = {
-  charms: { name: "Charm Bracelets", blurb: "Stories you can wear.", image: "/images/product-01.jpg" },
-  beaded: { name: "Beaded Bracelets", blurb: "Everyday elegance.", image: "/images/product-03.jpg" },
+  charms: {
+    name: "Charm Bracelets",
+    blurb: "Stories you can wear.",
+    image: "/images/product-01.jpg",
+  },
+  beaded: {
+    name: "Beaded Bracelets",
+    blurb: "Everyday elegance.",
+    image: "/images/product-03.jpg",
+  },
   necklaces: { name: "Necklaces", blurb: "Close to the heart.", image: "/images/product-07.jpg" },
   gifts: { name: "Gifts", blurb: "For someone you love.", image: "/images/product-08.jpg" },
   new: { name: "New Arrivals", blurb: "Just crafted.", image: "/images/product-02.jpg" },
@@ -32,7 +40,8 @@ export const products: readonly Product[] = [
   {
     slug: "the-memory-keeper",
     name: "The Memory Keeper",
-    description: "A hand-assembled charm bracelet with butterfly, heart and key charms — for the moments you never want to forget.",
+    description:
+      "A hand-assembled charm bracelet with butterfly, heart and key charms — for the moments you never want to forget.",
     price: 6000,
     images: ["/images/product-01.jpg", "/images/product-02.jpg"],
     alt: "The Memory Keeper charm bracelet on ivory linen",
@@ -40,12 +49,18 @@ export const products: readonly Product[] = [
     collections: ["charms", "new"],
     featured: true,
     customisable: true,
-    details: ["Gold-tone brass base", "Hand-set resin charms", "Adjustable 16–20 cm", "Made to order in 5 days"],
+    details: [
+      "Gold-tone brass base",
+      "Hand-set resin charms",
+      "Adjustable 16–20 cm",
+      "Made to order in 5 days",
+    ],
   },
   {
     slug: "little-wonders",
     name: "Little Wonders",
-    description: "Delicate beaded bracelet in champagne and blush tones. Made to be layered, worn, and loved.",
+    description:
+      "Delicate beaded bracelet in champagne and blush tones. Made to be layered, worn, and loved.",
     price: 6000,
     images: ["/images/product-03.jpg"],
     alt: "Little Wonders beaded bracelet in champagne tones",
@@ -58,7 +73,8 @@ export const products: readonly Product[] = [
   {
     slug: "heart-of-gold",
     name: "Heart of Gold",
-    description: "A single gold heart charm on a fine chain. Quiet, meaningful, and entirely yours.",
+    description:
+      "A single gold heart charm on a fine chain. Quiet, meaningful, and entirely yours.",
     price: 6000,
     images: ["/images/product-04.jpg"],
     alt: "Heart of Gold single charm bracelet",
@@ -92,12 +108,18 @@ export const products: readonly Product[] = [
     collections: ["gifts"],
     featured: true,
     customisable: true,
-    details: ["Charm bracelet included", "Linen keepsake pouch", "Handwritten note", "Gift-wrapped"],
+    details: [
+      "Charm bracelet included",
+      "Linen keepsake pouch",
+      "Handwritten note",
+      "Gift-wrapped",
+    ],
   },
   {
     slug: "black-clover",
     name: "Black Clover",
-    description: "A sleek bracelet finished with black clover charms for a bold little touch of luck.",
+    description:
+      "A sleek bracelet finished with black clover charms for a bold little touch of luck.",
     price: 20000,
     images: ["/images/black-clover.jpg"],
     alt: "Black Clover charm bracelet on a dark background",
@@ -105,12 +127,18 @@ export const products: readonly Product[] = [
     collections: ["charms", "new"],
     featured: true,
     customisable: false,
-    details: ["Gold-tone brass base", "Black clover charms", "Adjustable 16–20 cm", "Ready to ship"],
+    details: [
+      "Gold-tone brass base",
+      "Black clover charms",
+      "Adjustable 16–20 cm",
+      "Ready to ship",
+    ],
   },
   {
     slug: "couple-bracelet",
     name: "Couple Bracelet",
-    description: "A matching bracelet set made to hold two stories close, wherever the day takes you.",
+    description:
+      "A matching bracelet set made to hold two stories close, wherever the day takes you.",
     price: 35000,
     images: ["/images/couple-bracelet.jpg"],
     alt: "Matching couple bracelets styled together",
@@ -148,16 +176,43 @@ export const customCharms: readonly CustomCharm[] = [
 
 export type Testimonial = { name: string; text: string; location: string };
 export const testimonials: readonly Testimonial[] = [
-  { name: "Ananya R.", text: "My bracelet arrived wrapped like a gift to myself. The charms feel weighty and real — not costume at all.", location: "Mumbai" },
-  { name: "Priya M.", text: "I built a bracelet with charms from each city I've lived in. It's the most personal thing I own.", location: "Bengaluru" },
-  { name: "Sara K.", text: "Ordered on WhatsApp and it was effortless. The handwritten note made me cry a little.", location: "Delhi" },
+  {
+    name: "Ananya R.",
+    text: "My bracelet arrived wrapped like a gift to myself. The charms feel weighty and real — not costume at all.",
+    location: "Mumbai",
+  },
+  {
+    name: "Priya M.",
+    text: "I built a bracelet with charms from each city I've lived in. It's the most personal thing I own.",
+    location: "Bengaluru",
+  },
+  {
+    name: "Sara K.",
+    text: "Ordered on WhatsApp and it was effortless. The handwritten note made me cry a little.",
+    location: "Delhi",
+  },
 ];
 
 export type GiftCategory = { name: string; blurb: string; image: string; price: string };
 export const giftCategories: readonly GiftCategory[] = [
-  { name: "For Her", blurb: "The piece she'll wear every day.", image: "/images/gift-01.jpg", price: "from ₹1,650" },
-  { name: "For a Friend", blurb: "A charm for your shared story.", image: "/images/gift-02.jpg", price: "from ₹1,800" },
-  { name: "For You", blurb: "Because you earned it.", image: "/images/gift-03.jpg", price: "from ₹1,450" },
+  {
+    name: "For Her",
+    blurb: "The piece she'll wear every day.",
+    image: "/images/gift-01.jpg",
+    price: "from ₹1,650",
+  },
+  {
+    name: "For a Friend",
+    blurb: "A charm for your shared story.",
+    image: "/images/gift-02.jpg",
+    price: "from ₹1,800",
+  },
+  {
+    name: "For You",
+    blurb: "Because you earned it.",
+    image: "/images/gift-03.jpg",
+    price: "from ₹1,450",
+  },
 ];
 
 export type GalleryImage = { src: string; alt: string };

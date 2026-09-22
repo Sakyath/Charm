@@ -10,8 +10,15 @@ export function CustomizationBuilder() {
 
   const toggle = (id: string) => {
     setSelected((prev) => {
-      const next = prev.includes(id) ? prev.filter((c) => c !== id) : prev.length < 5 ? [...prev, id] : prev;
-      if (next.length !== prev.length) toast(next.includes(id) ? "Charm added" : "Charm removed", { description: customCharms.find((charm) => charm.id === id)?.name });
+      const next = prev.includes(id)
+        ? prev.filter((c) => c !== id)
+        : prev.length < 5
+          ? [...prev, id]
+          : prev;
+      if (next.length !== prev.length)
+        toast(next.includes(id) ? "Charm added" : "Charm removed", {
+          description: customCharms.find((charm) => charm.id === id)?.name,
+        });
       return next;
     });
   };
@@ -30,22 +37,33 @@ export function CustomizationBuilder() {
           <Reveal className="lg:sticky lg:top-28 lg:self-start">
             <p className="eyebrow text-gold">Customise</p>
             <h2 className="display-lg mt-6 text-ivory">BUILD YOUR OWN.</h2>
-            <p className="body-lg mt-6 text-ivory/60">Choose up to 5 charms. Add an initial. We'll make it by hand.</p>
+            <p className="body-lg mt-6 text-ivory/60">
+              Choose up to 5 charms. Add an initial. We'll make it by hand.
+            </p>
 
             <div className="mt-10 overflow-hidden rounded-[1.25rem] border border-ivory/10 bg-charcoal/40">
-              <img src="/images/product-06.jpg" alt="Custom charm bracelet preview" className="aspect-[4/3] w-full object-cover" />
+              <img
+                src="/images/product-06.jpg"
+                alt="Custom charm bracelet preview"
+                className="aspect-[4/3] w-full object-cover"
+              />
             </div>
 
             <div className="glass-panel glass-panel-raised mt-8 p-6">
               <p className="eyebrow text-gold">Your selection</p>
               <div className="mt-4 flex flex-wrap gap-2">
                 {selected.length === 0 ? (
-                  <span className="font-sans text-sm font-light text-ivory/40">No charms selected</span>
+                  <span className="font-sans text-sm font-light text-ivory/40">
+                    No charms selected
+                  </span>
                 ) : (
                   selected.map((id) => {
                     const charm = customCharms.find((c) => c.id === id);
                     return (
-                      <span key={id} className="rounded-full border border-gold/25 bg-gold/10 px-3 py-1 font-sans text-[0.65rem] text-champagne">
+                      <span
+                        key={id}
+                        className="rounded-full border border-gold/25 bg-gold/10 px-3 py-1 font-sans text-[0.65rem] text-champagne"
+                      >
                         {charm?.name}
                       </span>
                     );
@@ -54,11 +72,14 @@ export function CustomizationBuilder() {
               </div>
               {initial && (
                 <p className="mt-3 font-sans text-sm text-ivory/70">
-                  Initial: <span className="script text-2xl text-gold">{initial.toUpperCase()}</span>
+                  Initial:{" "}
+                  <span className="script text-2xl text-gold">{initial.toUpperCase()}</span>
                 </p>
               )}
               <div className="rule-gold my-5 w-12" />
-              <p className="font-sans text-[0.7rem] uppercase tracking-[0.2em] text-ivory/50">Estimated price</p>
+              <p className="font-sans text-[0.7rem] uppercase tracking-[0.2em] text-ivory/50">
+                Estimated price
+              </p>
               <p className="font-display text-3xl text-ivory">{formatPrice(estimate)}</p>
               <a
                 href={createWhatsAppCustomLink(selected, estimate, initial || undefined)}
@@ -86,13 +107,17 @@ export function CustomizationBuilder() {
                   >
                     <p className="font-display text-xl text-ivory">{charm.name}</p>
                     <p className="mt-1 font-sans text-[0.65rem] text-ivory/50">{charm.meaning}</p>
-                    <p className="mt-2 font-sans text-[0.7rem] text-champagne">{formatPrice(charm.price)}</p>
+                    <p className="mt-2 font-sans text-[0.7rem] text-champagne">
+                      {formatPrice(charm.price)}
+                    </p>
                   </button>
                 );
               })}
             </div>
             <div className="mt-8">
-              <label className="eyebrow text-gold" htmlFor="initial-input">Add an initial (optional)</label>
+              <label className="eyebrow text-gold" htmlFor="initial-input">
+                Add an initial (optional)
+              </label>
               <input
                 id="initial-input"
                 type="text"
@@ -103,7 +128,9 @@ export function CustomizationBuilder() {
                 className="mt-4 w-20 border border-champagne/25 bg-transparent px-4 py-3 text-center font-display text-2xl text-ivory placeholder:text-ivory/20 focus:outline-none"
               />
             </div>
-            <p className="mt-6 font-sans text-[0.7rem] font-light text-ivory/40">{selected.length}/5 charms selected</p>
+            <p className="mt-6 font-sans text-[0.7rem] font-light text-ivory/40">
+              {selected.length}/5 charms selected
+            </p>
           </Reveal>
         </div>
       </div>

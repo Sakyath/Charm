@@ -18,7 +18,13 @@ export function BrandStory() {
     <section className="bg-obsidian px-5 py-24 md:px-10 md:py-32">
       <div className="mx-auto grid max-w-[1400px] items-center gap-14 md:grid-cols-2 md:gap-24">
         <Reveal parallax={30}>
-          <img src="/images/story-01.jpg" alt="A handmade charm bracelet being assembled by hand" loading="lazy" decoding="async" className="aspect-[4/5] w-full object-cover" />
+          <img
+            src="/images/story-01.jpg"
+            alt="A handmade charm bracelet being assembled by hand"
+            loading="lazy"
+            decoding="async"
+            className="aspect-[4/5] w-full object-cover"
+          />
         </Reveal>
         <div>
           <Reveal>
@@ -27,7 +33,8 @@ export function BrandStory() {
           </Reveal>
           <Reveal delay={140}>
             <p className="body-lg mt-8 max-w-md text-gold">
-              Every charm is chosen, arranged and finished by hand. No two pieces are ever quite the same — because no two stories are.
+              Every charm is chosen, arranged and finished by hand. No two pieces are ever quite the
+              same — because no two stories are.
             </p>
           </Reveal>
           <Reveal delay={240}>

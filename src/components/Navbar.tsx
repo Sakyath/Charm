@@ -133,88 +133,110 @@ export function Navbar() {
               aria-label="Open shopping tools"
               className={`utility-capsule flex items-center gap-1 rounded-full px-2 py-1.5 text-inherit transition-all duration-300 ${utilityOpen ? "utility-capsule-active" : ""}`}
             >
-              <span className="utility-capsule-icon"><Search className="h-3.5 w-3.5" strokeWidth={1.5} /></span>
-              <span className="utility-capsule-icon"><Heart className="h-3.5 w-3.5" strokeWidth={1.5} /></span>
-              <span className="utility-capsule-icon"><ShoppingBag className="h-3.5 w-3.5" strokeWidth={1.5} /></span>
-              {(count > 0 || cartCount > 0) && <span className="ml-0.5 h-1.5 w-1.5 rounded-full bg-gold" />}
+              <span className="utility-capsule-icon">
+                <Search className="h-3.5 w-3.5" strokeWidth={1.5} />
+              </span>
+              <span className="utility-capsule-icon">
+                <Heart className="h-3.5 w-3.5" strokeWidth={1.5} />
+              </span>
+              <span className="utility-capsule-icon">
+                <ShoppingBag className="h-3.5 w-3.5" strokeWidth={1.5} />
+              </span>
+              {(count > 0 || cartCount > 0) && (
+                <span className="ml-0.5 h-1.5 w-1.5 rounded-full bg-gold" />
+              )}
             </button>
 
             {mounted &&
               (utilityOpen || utilityClosing) &&
               createPortal(
                 <>
-                <button
-                  type="button"
-                  aria-label="Close shopping tools"
-                  className={`utility-scrim fixed inset-0 z-40 h-full w-full cursor-default ${utilityClosing ? "utility-scrim-closing" : ""}`}
-                  onClick={() => closeUtility()}
-                />
-                <div className={`utility-popover absolute right-0 top-[calc(100%+0.8rem)] z-50 w-64 overflow-hidden rounded-[1.35rem] p-2 ${utilityClosing ? "utility-popover-closing" : ""}`} role="menu">
-                  <div className="utility-popover-head flex items-center justify-between px-3 pb-2 pt-2">
-                    <div>
-                      <p className="font-display text-lg leading-none text-espresso">Little rituals</p>
-                      <p className="mt-1 font-sans text-[0.58rem] uppercase tracking-[0.18em] text-stone">Your essentials</p>
-                    </div>
-                    <span className="utility-sparkle" aria-hidden="true"><Sparkles className="h-3.5 w-3.5" strokeWidth={1.4} /></span>
-                  </div>
                   <button
                     type="button"
-                    role="menuitem"
-                    style={{ "--i": 0 } as CSSProperties}
-                    className="utility-action flex w-full items-center gap-3 rounded-[1rem] px-4 py-3 text-left text-espresso"
-                    onClick={() => {
-                      closeUtility();
-                      setSearch(true);
-                    }}
-                  >
-                    <Search className="h-4 w-4 text-gold" strokeWidth={1.4} />
-                    <span className="flex-1 font-sans text-sm">Search the collection</span>
-                    <ChevronRight className="h-4 w-4 text-stone/60" strokeWidth={1.4} />
-                  </button>
-                  <Link
-                    to="/wishlist"
-                    role="menuitem"
-                    style={{ "--i": 1 } as CSSProperties}
+                    aria-label="Close shopping tools"
+                    className={`utility-scrim fixed inset-0 z-40 h-full w-full cursor-default ${utilityClosing ? "utility-scrim-closing" : ""}`}
                     onClick={() => closeUtility()}
-                    className="utility-action flex items-center gap-3 rounded-[1rem] px-4 py-3 text-espresso"
-                  >
-                    <Heart className="h-4 w-4 text-gold" strokeWidth={1.4} />
-                    <span className="flex-1 font-sans text-sm">Wishlist</span>
-                    {count > 0 && <span className="font-sans text-xs text-stone">{count}</span>}
-                    <ChevronRight className="h-4 w-4 text-stone/60" strokeWidth={1.4} />
-                  </Link>
-                  <Link
-                    to="/cart"
-                    role="menuitem"
-                    style={{ "--i": 2 } as CSSProperties}
-                    onClick={() => closeUtility()}
-                    className="utility-action flex items-center gap-3 rounded-[1rem] px-4 py-3 text-espresso"
-                  >
-                    <ShoppingBag className="h-4 w-4 text-gold" strokeWidth={1.4} />
-                    <span className="flex-1 font-sans text-sm">Your bag</span>
-                    {cartCount > 0 && <span className="font-sans text-xs text-stone">{cartCount}</span>}
-                    <ChevronRight className="h-4 w-4 text-stone/60" strokeWidth={1.4} />
-                  </Link>
+                  />
                   <div
-                    className="utility-drag-handle"
-                    onPointerDown={(event) => {
-                      utilityDragStart.current = event.clientY;
-                      event.currentTarget.setPointerCapture(event.pointerId);
-                    }}
-                    onPointerMove={(event) => {
-                      if (utilityDragStart.current !== null && utilityDragStart.current - event.clientY > 56) {
-                        closeUtility();
-                        utilityDragStart.current = null;
-                      }
-                    }}
-                    onPointerUp={() => {
-                      utilityDragStart.current = null;
-                    }}
-                    role="presentation"
+                    className={`utility-popover absolute right-0 top-[calc(100%+0.8rem)] z-50 w-64 overflow-hidden rounded-[1.35rem] p-2 ${utilityClosing ? "utility-popover-closing" : ""}`}
+                    role="menu"
                   >
-                    <span />
+                    <div className="utility-popover-head flex items-center justify-between px-3 pb-2 pt-2">
+                      <div>
+                        <p className="font-display text-lg leading-none text-espresso">
+                          Little rituals
+                        </p>
+                        <p className="mt-1 font-sans text-[0.58rem] uppercase tracking-[0.18em] text-stone">
+                          Your essentials
+                        </p>
+                      </div>
+                      <span className="utility-sparkle" aria-hidden="true">
+                        <Sparkles className="h-3.5 w-3.5" strokeWidth={1.4} />
+                      </span>
+                    </div>
+                    <button
+                      type="button"
+                      role="menuitem"
+                      style={{ "--i": 0 } as CSSProperties}
+                      className="utility-action flex w-full items-center gap-3 rounded-[1rem] px-4 py-3 text-left text-espresso"
+                      onClick={() => {
+                        closeUtility();
+                        setSearch(true);
+                      }}
+                    >
+                      <Search className="h-4 w-4 text-gold" strokeWidth={1.4} />
+                      <span className="flex-1 font-sans text-sm">Search the collection</span>
+                      <ChevronRight className="h-4 w-4 text-stone/60" strokeWidth={1.4} />
+                    </button>
+                    <Link
+                      to="/wishlist"
+                      role="menuitem"
+                      style={{ "--i": 1 } as CSSProperties}
+                      onClick={() => closeUtility()}
+                      className="utility-action flex items-center gap-3 rounded-[1rem] px-4 py-3 text-espresso"
+                    >
+                      <Heart className="h-4 w-4 text-gold" strokeWidth={1.4} />
+                      <span className="flex-1 font-sans text-sm">Wishlist</span>
+                      {count > 0 && <span className="font-sans text-xs text-stone">{count}</span>}
+                      <ChevronRight className="h-4 w-4 text-stone/60" strokeWidth={1.4} />
+                    </Link>
+                    <Link
+                      to="/cart"
+                      role="menuitem"
+                      style={{ "--i": 2 } as CSSProperties}
+                      onClick={() => closeUtility()}
+                      className="utility-action flex items-center gap-3 rounded-[1rem] px-4 py-3 text-espresso"
+                    >
+                      <ShoppingBag className="h-4 w-4 text-gold" strokeWidth={1.4} />
+                      <span className="flex-1 font-sans text-sm">Your bag</span>
+                      {cartCount > 0 && (
+                        <span className="font-sans text-xs text-stone">{cartCount}</span>
+                      )}
+                      <ChevronRight className="h-4 w-4 text-stone/60" strokeWidth={1.4} />
+                    </Link>
+                    <div
+                      className="utility-drag-handle"
+                      onPointerDown={(event) => {
+                        utilityDragStart.current = event.clientY;
+                        event.currentTarget.setPointerCapture(event.pointerId);
+                      }}
+                      onPointerMove={(event) => {
+                        if (
+                          utilityDragStart.current !== null &&
+                          utilityDragStart.current - event.clientY > 56
+                        ) {
+                          closeUtility();
+                          utilityDragStart.current = null;
+                        }
+                      }}
+                      onPointerUp={() => {
+                        utilityDragStart.current = null;
+                      }}
+                      role="presentation"
+                    >
+                      <span />
+                    </div>
                   </div>
-                </div>
                 </>,
                 document.body,
               )}

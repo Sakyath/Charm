@@ -36,11 +36,11 @@ export function ProductCard({ product, onQuickView }: Props) {
         <Link to="/product/$slug" params={{ slug: product.slug }}>
           <div className="product-zoom h-full w-full">
             <img
-            src={img}
-            alt={product.alt}
-            loading="lazy"
-            decoding="async"
-            className="aspect-[4/5] w-full object-cover transition-transform duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.05]"
+              src={img}
+              alt={product.alt}
+              loading="lazy"
+              decoding="async"
+              className="aspect-[4/5] w-full object-cover transition-transform duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.05]"
             />
           </div>
         </Link>
@@ -49,13 +49,20 @@ export function ProductCard({ product, onQuickView }: Props) {
           type="button"
           onClick={() => {
             toggle(product.slug);
-            toast(wished ? "Removed from your wishlist" : "Saved to your wishlist", { description: product.name });
+            toast(wished ? "Removed from your wishlist" : "Saved to your wishlist", {
+              description: product.name,
+            });
           }}
           aria-pressed={wished}
-          aria-label={wished ? `Remove ${product.name} from wishlist` : `Add ${product.name} to wishlist`}
+          aria-label={
+            wished ? `Remove ${product.name} from wishlist` : `Add ${product.name} to wishlist`
+          }
           className={`glass-control absolute right-3 top-3 rounded-full p-2 backdrop-blur-sm transition-all ${wished ? "heart-pop" : ""}`}
         >
-          <Heart className={`h-4 w-4 transition-all ${wished ? "fill-gold text-gold" : "text-ivory/80"}`} strokeWidth={1.2} />
+          <Heart
+            className={`h-4 w-4 transition-all ${wished ? "fill-gold text-gold" : "text-ivory/80"}`}
+            strokeWidth={1.2}
+          />
         </button>
 
         {onQuickView && hovered && (
@@ -90,13 +97,17 @@ export function ProductCard({ product, onQuickView }: Props) {
 
       <div className="mt-4 px-1 pb-1">
         <Link to="/product/$slug" params={{ slug: product.slug }}>
-          <h3 className="font-display text-lg text-ivory transition-colors group-hover:text-gold">{product.name}</h3>
+          <h3 className="font-display text-lg text-ivory transition-colors group-hover:text-gold">
+            {product.name}
+          </h3>
         </Link>
         <p className="mt-1.5 line-clamp-2 font-sans text-[0.78rem] font-light leading-snug text-ivory/50">
           {product.description}
         </p>
         <div className="mt-3 flex items-center justify-between">
-          <span className="font-sans text-sm font-light text-gold">{formatPrice(product.price)}</span>
+          <span className="font-sans text-sm font-light text-gold">
+            {formatPrice(product.price)}
+          </span>
           <a
             href={createWhatsAppOrderLink(product)}
             target="_blank"

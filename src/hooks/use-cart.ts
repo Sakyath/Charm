@@ -44,7 +44,9 @@ export function useCart() {
     const current = read();
     const existing = current.find((item) => item.slug === slug);
     const next = existing
-      ? current.map((item) => (item.slug === slug ? { ...item, quantity: item.quantity + 1 } : item))
+      ? current.map((item) =>
+          item.slug === slug ? { ...item, quantity: item.quantity + 1 } : item,
+        )
       : [...current, { slug, quantity: 1 }];
     setItems(next);
     write(next);

@@ -228,18 +228,26 @@ select:focus {
 .ios-nav-glass.nav-scrolled {
   background: rgba(10, 10, 11, 0.6);
   border-color: var(--glass-border);
-  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.5), inset 0 1px 0 var(--glass-highlight);
+  box-shadow:
+    0 18px 50px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 var(--glass-highlight);
   backdrop-filter: blur(28px) saturate(150%);
 }
 .nav-pill {
   border-radius: 999px;
   border: 1px solid transparent;
-  transition: background-color 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease, backdrop-filter 0.5s ease;
+  transition:
+    background-color 0.5s ease,
+    border-color 0.5s ease,
+    box-shadow 0.5s ease,
+    backdrop-filter 0.5s ease;
 }
 .nav-pill.is-glass {
   background: rgba(20, 20, 22, 0.55);
   border-color: var(--glass-border);
-  box-shadow: 0 22px 60px rgba(0, 0, 0, 0.55), inset 0 1px 0 var(--glass-highlight);
+  box-shadow:
+    0 22px 60px rgba(0, 0, 0, 0.55),
+    inset 0 1px 0 var(--glass-highlight);
   backdrop-filter: blur(28px) saturate(150%);
 }
 .navbar-contrast {
@@ -251,9 +259,15 @@ select:focus {
   min-height: 2.4rem;
   border: 1px solid var(--glass-border);
   background: linear-gradient(145deg, rgba(243, 237, 227, 0.1), rgba(243, 237, 227, 0.03));
-  box-shadow: inset 0 1px 0 var(--glass-highlight), 0 12px 30px rgba(0, 0, 0, 0.45);
+  box-shadow:
+    inset 0 1px 0 var(--glass-highlight),
+    0 12px 30px rgba(0, 0, 0, 0.45);
   backdrop-filter: blur(20px) saturate(140%);
-  transition: transform 0.5s var(--ease-lux), border-color 0.4s ease, background 0.4s ease, box-shadow 0.5s ease;
+  transition:
+    transform 0.5s var(--ease-lux),
+    border-color 0.4s ease,
+    background 0.4s ease,
+    box-shadow 0.5s ease;
 }
 .utility-capsule::before {
   content: "";
@@ -275,7 +289,9 @@ select:focus {
   opacity: 0;
   transform: scale(0.9);
   pointer-events: none;
-  transition: opacity 0.35s ease, transform 0.5s var(--ease-lux);
+  transition:
+    opacity 0.35s ease,
+    transform 0.5s var(--ease-lux);
 }
 .utility-capsule-active::after {
   opacity: 1;
@@ -292,8 +308,11 @@ select:focus {
   border: 1px solid var(--glass-border);
   border-radius: 999px;
   background: rgba(243, 237, 227, 0.05);
-  transition: transform 0.55s var(--ease-capsule, cubic-bezier(0.34, 1.56, 0.64, 1)), background 0.35s ease,
-    border-color 0.35s ease, color 0.35s ease;
+  transition:
+    transform 0.55s var(--ease-capsule, cubic-bezier(0.34, 1.56, 0.64, 1)),
+    background 0.35s ease,
+    border-color 0.35s ease,
+    color 0.35s ease;
 }
 .utility-capsule:hover .utility-capsule-icon {
   background: rgba(243, 237, 227, 0.1);
@@ -326,7 +345,9 @@ select:focus {
   right: 2.5rem;
   border: 1px solid var(--glass-border-strong);
   background: linear-gradient(145deg, rgba(24, 24, 27, 0.88), rgba(10, 10, 11, 0.82));
-  box-shadow: 0 34px 90px rgba(0, 0, 0, 0.7), inset 0 1px 0 var(--glass-highlight);
+  box-shadow:
+    0 34px 90px rgba(0, 0, 0, 0.7),
+    inset 0 1px 0 var(--glass-highlight);
   backdrop-filter: blur(34px) saturate(150%);
   animation: utility-unfurl 0.72s cubic-bezier(0.2, 1.12, 0.3, 1) both;
   transform-origin: top right;
@@ -374,7 +395,12 @@ select:focus {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background: linear-gradient(120deg, rgba(255, 255, 255, 0.07), transparent 42%, rgba(201, 169, 106, 0.07));
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0.07),
+    transparent 42%,
+    rgba(201, 169, 106, 0.07)
+  );
 }
 .utility-sparkle {
   display: flex;
@@ -394,7 +420,10 @@ select:focus {
   z-index: 1;
   min-height: 3.4rem;
   overflow: hidden;
-  transition: background-color 0.25s ease, transform 0.35s var(--ease-lux), box-shadow 0.35s ease;
+  transition:
+    background-color 0.25s ease,
+    transform 0.35s var(--ease-lux),
+    box-shadow 0.35s ease;
   animation: utility-item-in 0.6s var(--ease-lux) both;
   animation-delay: calc(0.16s + var(--i, 0) * 0.075s);
 }
@@ -422,8 +451,13 @@ select:focus {
   box-shadow: inset 0 0 0 1px rgba(201, 169, 106, 0.22);
 }
 @keyframes utility-halo {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(201, 169, 106, 0); }
-  50% { box-shadow: 0 0 16px 2px rgba(201, 169, 106, 0.22); }
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(201, 169, 106, 0);
+  }
+  50% {
+    box-shadow: 0 0 16px 2px rgba(201, 169, 106, 0.22);
+  }
 }
 @keyframes utility-unfurl {
   0% {
@@ -464,29 +498,65 @@ select:focus {
   }
 }
 @keyframes utility-sheen {
-  0% { opacity: 0; transform: translateX(-70%); }
-  25% { opacity: 1; }
-  100% { opacity: 0; transform: translateX(70%); }
+  0% {
+    opacity: 0;
+    transform: translateX(-70%);
+  }
+  25% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(70%);
+  }
 }
 @keyframes utility-item-in {
-  0% { opacity: 0; transform: translateY(14px) scale(0.96); filter: blur(6px); }
-  100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+  0% {
+    opacity: 0;
+    transform: translateY(14px) scale(0.96);
+    filter: blur(6px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
 }
 @keyframes utility-item-out {
-  0% { opacity: 1; transform: translateY(0); }
-  100% { opacity: 0; transform: translateY(8px) scale(0.97); }
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(8px) scale(0.97);
+  }
 }
 @keyframes utility-sparkle-spin {
-  0% { opacity: 0; transform: rotate(-140deg) scale(0.4); }
-  100% { opacity: 1; transform: rotate(0deg) scale(1); }
+  0% {
+    opacity: 0;
+    transform: rotate(-140deg) scale(0.4);
+  }
+  100% {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+  }
 }
 @keyframes utility-scrim-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 @keyframes utility-scrim-out {
-  from { opacity: 1; }
-  to { opacity: 0; }
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }
 @media (prefers-reduced-motion: reduce) {
   .utility-popover,
@@ -497,7 +567,11 @@ select:focus {
   .utility-capsule-active::after {
     animation: none !important;
   }
-  .utility-popover { opacity: 1; transform: none; filter: none; }
+  .utility-popover {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
 }
 @media (max-width: 767px) {
   .navbar-contrast {
@@ -562,13 +636,33 @@ select:focus {
   }
 }
 @keyframes utility-drop-in {
-  0% { opacity: 0; transform: translateY(-22px) scaleY(0.24); filter: blur(12px); }
-  55% { opacity: 1; transform: translateY(0) scaleY(1.04); filter: blur(1px); }
-  100% { opacity: 1; transform: translateY(0) scaleY(1); filter: blur(0); }
+  0% {
+    opacity: 0;
+    transform: translateY(-22px) scaleY(0.24);
+    filter: blur(12px);
+  }
+  55% {
+    opacity: 1;
+    transform: translateY(0) scaleY(1.04);
+    filter: blur(1px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scaleY(1);
+    filter: blur(0);
+  }
 }
 @keyframes utility-drop-out {
-  0% { opacity: 1; transform: translateY(0) scaleY(1); filter: blur(0); }
-  100% { opacity: 0; transform: translateY(-20px) scaleY(0.2); filter: blur(10px); }
+  0% {
+    opacity: 1;
+    transform: translateY(0) scaleY(1);
+    filter: blur(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-20px) scaleY(0.2);
+    filter: blur(10px);
+  }
 }
 .ios-separator {
   border-color: var(--ios-separator);
@@ -647,7 +741,9 @@ select:focus {
 .glass-control,
 .glass-button {
   border: 1px solid var(--glass-border);
-  box-shadow: inset 0 1px 0 var(--glass-highlight), 0 14px 34px rgba(0, 0, 0, 0.45);
+  box-shadow:
+    inset 0 1px 0 var(--glass-highlight),
+    0 14px 34px rgba(0, 0, 0, 0.45);
   backdrop-filter: blur(20px) saturate(140%);
 }
 .spotlight {
@@ -663,7 +759,12 @@ select:focus {
   pointer-events: none;
   border-radius: inherit;
   opacity: 0;
-  background: radial-gradient(circle 200px at var(--spot-x) var(--spot-y), rgba(201, 169, 106, 0.18), rgba(201, 169, 106, 0.06) 40%, transparent 72%);
+  background: radial-gradient(
+    circle 200px at var(--spot-x) var(--spot-y),
+    rgba(201, 169, 106, 0.18),
+    rgba(201, 169, 106, 0.06) 40%,
+    transparent 72%
+  );
   mix-blend-mode: screen;
   transition: opacity 0.45s ease;
 }
@@ -677,7 +778,11 @@ select:focus {
 }
 .spotlight-action::after {
   z-index: -1;
-  background: radial-gradient(circle 90px at var(--spot-x) var(--spot-y), rgba(201, 169, 106, 0.3), transparent 72%);
+  background: radial-gradient(
+    circle 90px at var(--spot-x) var(--spot-y),
+    rgba(201, 169, 106, 0.3),
+    transparent 72%
+  );
 }
 .glass-control {
   background: rgba(20, 20, 22, 0.55);
@@ -686,20 +791,30 @@ select:focus {
 .glass-button {
   position: relative;
   overflow: hidden;
-  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.45s ease, background-color 0.45s ease;
+  transition:
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.45s ease,
+    background-color 0.45s ease;
 }
 .glass-button::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(110deg, transparent 25%, rgba(201, 169, 106, 0.22) 48%, transparent 70%);
+  background: linear-gradient(
+    110deg,
+    transparent 25%,
+    rgba(201, 169, 106, 0.22) 48%,
+    transparent 70%
+  );
   transform: translateX(-120%);
   transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
 }
 .glass-button:hover {
   transform: translateY(-3px);
   border-color: rgba(201, 169, 106, 0.42);
-  box-shadow: inset 0 1px 0 var(--glass-highlight), 0 22px 44px rgba(0, 0, 0, 0.55);
+  box-shadow:
+    inset 0 1px 0 var(--glass-highlight),
+    0 22px 44px rgba(0, 0, 0, 0.55);
 }
 .glass-button:hover::after {
   transform: translateX(120%);
@@ -708,7 +823,9 @@ select:focus {
   cursor: zoom-in;
 }
 .product-zoom img {
-  transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1), filter 0.8s ease;
+  transition:
+    transform 1.2s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.8s ease;
 }
 .product-zoom:hover img {
   transform: scale(1.1);
@@ -723,7 +840,9 @@ select:focus {
 .charm-option.selected {
   border-color: var(--gold);
   background: rgba(201, 169, 106, 0.14);
-  box-shadow: 0 0 0 1px rgba(201, 169, 106, 0.35), 0 18px 40px -18px rgba(201, 169, 106, 0.45);
+  box-shadow:
+    0 0 0 1px rgba(201, 169, 106, 0.35),
+    0 18px 40px -18px rgba(201, 169, 106, 0.45);
   animation: charm-select 0.45s cubic-bezier(0.22, 1, 0.36, 1);
 }
 .toaster [data-sonner-toast] {
@@ -731,25 +850,45 @@ select:focus {
   border-radius: 1rem !important;
   background: rgba(20, 20, 22, 0.86) !important;
   color: var(--ivory) !important;
-  box-shadow: 0 26px 60px rgba(0, 0, 0, 0.6), inset 0 1px 0 var(--glass-highlight) !important;
+  box-shadow:
+    0 26px 60px rgba(0, 0, 0, 0.6),
+    inset 0 1px 0 var(--glass-highlight) !important;
   backdrop-filter: blur(26px) saturate(150%);
 }
 @keyframes heart-pop {
-  0% { transform: scale(1); }
-  45% { transform: scale(1.25) rotate(-8deg); }
-  100% { transform: scale(1); }
+  0% {
+    transform: scale(1);
+  }
+  45% {
+    transform: scale(1.25) rotate(-8deg);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 @keyframes charm-select {
-  0% { transform: scale(0.96); }
-  65% { transform: scale(1.025); }
-  100% { transform: scale(1); }
+  0% {
+    transform: scale(0.96);
+  }
+  65% {
+    transform: scale(1.025);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 main {
   animation: page-enter 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 @keyframes page-enter {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* ---------- Scrollbar ---------- */
@@ -789,13 +928,20 @@ main {
   border-radius: 999px;
   background: linear-gradient(140deg, #e3c98d, var(--gold) 45%, #a98a4e);
   color: #0a0a0b;
-  box-shadow: 0 18px 40px -18px rgba(201, 169, 106, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+  box-shadow:
+    0 18px 40px -18px rgba(201, 169, 106, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35);
 }
 .btn-gold::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(110deg, transparent 30%, rgba(255, 255, 255, 0.45) 50%, transparent 70%);
+  background: linear-gradient(
+    110deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.45) 50%,
+    transparent 70%
+  );
   transform: translateX(-130%);
   transition: transform 0.9s var(--ease-lux);
 }
@@ -804,7 +950,9 @@ main {
 }
 .btn-gold:hover {
   transform: translateY(-2px);
-  box-shadow: 0 26px 50px -18px rgba(201, 169, 106, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.45);
+  box-shadow:
+    0 26px 50px -18px rgba(201, 169, 106, 0.7),
+    inset 0 1px 0 rgba(255, 255, 255, 0.45);
 }
 
 /* Secondary glass action */
@@ -824,7 +972,10 @@ main {
 
 /* Consistent hover language */
 .lift {
-  transition: transform 0.55s var(--ease-lux), box-shadow 0.55s ease, border-color 0.4s ease;
+  transition:
+    transform 0.55s var(--ease-lux),
+    box-shadow 0.55s ease,
+    border-color 0.4s ease;
 }
 @media (hover: hover) and (pointer: fine) {
   .lift:hover {
@@ -863,15 +1014,22 @@ main {
   border-radius: 1.4rem;
   border: 1px solid var(--glass-border);
   background: linear-gradient(160deg, rgba(243, 237, 227, 0.06), rgba(243, 237, 227, 0.02));
-  box-shadow: 0 24px 60px -32px rgba(0, 0, 0, 0.8), inset 0 1px 0 var(--glass-highlight);
+  box-shadow:
+    0 24px 60px -32px rgba(0, 0, 0, 0.8),
+    inset 0 1px 0 var(--glass-highlight);
   backdrop-filter: blur(18px) saturate(130%);
-  transition: transform 0.6s var(--ease-lux), border-color 0.45s ease, box-shadow 0.6s ease;
+  transition:
+    transform 0.6s var(--ease-lux),
+    border-color 0.45s ease,
+    box-shadow 0.6s ease;
 }
 @media (hover: hover) and (pointer: fine) {
   .glass-card:hover {
     transform: translateY(-6px);
     border-color: rgba(201, 169, 106, 0.3);
-    box-shadow: 0 40px 80px -34px rgba(0, 0, 0, 0.85), inset 0 1px 0 var(--glass-highlight);
+    box-shadow:
+      0 40px 80px -34px rgba(0, 0, 0, 0.85),
+      inset 0 1px 0 var(--glass-highlight);
   }
 }
 
@@ -882,25 +1040,38 @@ main {
 }
 .capsule-shell {
   transform-style: preserve-3d;
-  transition: transform 0.9s var(--ease-capsule), opacity 0.6s ease;
+  transition:
+    transform 0.9s var(--ease-capsule),
+    opacity 0.6s ease;
   will-change: transform, opacity;
 }
 .capsule-lid {
   transform-origin: 50% 100%;
-  transition: transform 1s var(--ease-capsule), opacity 0.7s ease, filter 0.7s ease;
+  transition:
+    transform 1s var(--ease-capsule),
+    opacity 0.7s ease,
+    filter 0.7s ease;
   will-change: transform, opacity;
 }
 .capsule-base {
   transform-origin: 50% 0%;
-  transition: transform 1s var(--ease-capsule), opacity 0.7s ease;
+  transition:
+    transform 1s var(--ease-capsule),
+    opacity 0.7s ease;
   will-change: transform, opacity;
 }
 /* phase: idle */
-.capsule[data-phase="idle"] .capsule-shell { transform: scale(1); }
+.capsule[data-phase="idle"] .capsule-shell {
+  transform: scale(1);
+}
 /* phase: anticipation — slight compress + settle */
-.capsule[data-phase="anticipation"] .capsule-shell { transform: scale(0.965); }
+.capsule[data-phase="anticipation"] .capsule-shell {
+  transform: scale(0.965);
+}
 /* phase: activation — glass brightens, hairline gold ignites */
-.capsule[data-phase="activation"] .capsule-shell { transform: scale(1.015); }
+.capsule[data-phase="activation"] .capsule-shell {
+  transform: scale(1.015);
+}
 /* phase: opening — 3D split */
 .capsule[data-phase="opening"] .capsule-lid,
 .capsule[data-phase="emerge"] .capsule-lid,
@@ -918,18 +1089,29 @@ main {
 .capsule-interior-light {
   opacity: 0;
   transition: opacity 0.8s ease;
-  background: radial-gradient(60% 55% at 50% 55%, rgba(255, 228, 170, 0.55), rgba(201, 169, 106, 0.18) 45%, transparent 75%);
+  background: radial-gradient(
+    60% 55% at 50% 55%,
+    rgba(255, 228, 170, 0.55),
+    rgba(201, 169, 106, 0.18) 45%,
+    transparent 75%
+  );
   filter: blur(6px);
 }
-.capsule[data-phase="activation"] .capsule-interior-light { opacity: 0.4; }
+.capsule[data-phase="activation"] .capsule-interior-light {
+  opacity: 0.4;
+}
 .capsule[data-phase="opening"] .capsule-interior-light,
 .capsule[data-phase="emerge"] .capsule-interior-light,
-.capsule[data-phase="open"] .capsule-interior-light { opacity: 1; }
+.capsule[data-phase="open"] .capsule-interior-light {
+  opacity: 1;
+}
 
 .capsule-product {
   opacity: 0;
   transform: translate3d(0, 14%, 0) scale(0.86);
-  transition: transform 1.1s cubic-bezier(0.18, 1.32, 0.36, 1), opacity 0.7s ease;
+  transition:
+    transform 1.1s cubic-bezier(0.18, 1.32, 0.36, 1),
+    opacity 0.7s ease;
   will-change: transform, opacity;
 }
 .capsule[data-phase="emerge"] .capsule-product,
@@ -945,16 +1127,29 @@ main {
   inset: 0;
   pointer-events: none;
   opacity: 0;
-  background: linear-gradient(110deg, transparent 38%, rgba(255, 245, 220, 0.5) 50%, transparent 62%);
+  background: linear-gradient(
+    110deg,
+    transparent 38%,
+    rgba(255, 245, 220, 0.5) 50%,
+    transparent 62%
+  );
   mix-blend-mode: screen;
 }
 .capsule[data-phase="emerge"] .capsule-sweep {
   animation: capsule-sweep 1s var(--ease-lux) both;
 }
 @keyframes capsule-sweep {
-  0% { opacity: 0; transform: translateX(-60%); }
-  35% { opacity: 1; }
-  100% { opacity: 0; transform: translateX(60%); }
+  0% {
+    opacity: 0;
+    transform: translateX(-60%);
+  }
+  35% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(60%);
+  }
 }
 .capsule-particle {
   position: absolute;
@@ -971,14 +1166,24 @@ main {
   animation: capsule-float 3.4s ease-in-out infinite;
 }
 @keyframes capsule-float {
-  0% { opacity: 0; transform: translate3d(0, 10px, 0) scale(0.6); }
-  25% { opacity: 0.9; }
-  100% { opacity: 0; transform: translate3d(0, -60px, 40px) scale(1.15); }
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 10px, 0) scale(0.6);
+  }
+  25% {
+    opacity: 0.9;
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(0, -60px, 40px) scale(1.15);
+  }
 }
 .capsule-info {
   opacity: 0;
   transform: translateY(18px);
-  transition: opacity 0.7s ease 0.15s, transform 0.7s var(--ease-lux) 0.15s;
+  transition:
+    opacity 0.7s ease 0.15s,
+    transform 0.7s var(--ease-lux) 0.15s;
 }
 .capsule[data-phase="open"] .capsule-info {
   opacity: 1;
@@ -989,7 +1194,9 @@ main {
   inset: 0;
   border-radius: 999px;
   border: 1px solid rgba(201, 169, 106, 0.2);
-  transition: opacity 0.6s ease, transform 0.9s var(--ease-capsule);
+  transition:
+    opacity 0.6s ease,
+    transform 0.9s var(--ease-capsule);
 }
 .capsule[data-phase="activation"] .capsule-ring,
 .capsule[data-phase="opening"] .capsule-ring {

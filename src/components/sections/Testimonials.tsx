@@ -14,10 +14,14 @@ export function Testimonials() {
           <Reveal key={t.name} delay={i * 120}>
             <blockquote className="border border-espresso/10 bg-cream p-8">
               <p className="script text-3xl text-gold">"</p>
-              <p className="mt-2 font-sans text-sm font-light leading-relaxed text-gold">{t.text}</p>
+              <p className="mt-2 font-sans text-sm font-light leading-relaxed text-gold">
+                {t.text}
+              </p>
               <div className="rule-gold my-5 w-10" />
               <p className="font-display text-lg text-espresso">{t.name}</p>
-              <p className="font-sans text-[0.65rem] uppercase tracking-[0.2em] text-stone">{t.location}</p>
+              <p className="font-sans text-[0.65rem] uppercase tracking-[0.2em] text-stone">
+                {t.location}
+              </p>
             </blockquote>
           </Reveal>
         ))}

@@ -3,10 +3,26 @@ import { Reveal } from "@/components/Reveal";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 
 const posts = [
-  { title: "How to choose charms that tell your story", excerpt: "A gentle guide to building a bracelet that means something.", date: "Coming soon" },
-  { title: "Behind the bench: a day in the studio", excerpt: "From sketch to finished piece — how a charm is made.", date: "Coming soon" },
-  { title: "Gifting a charm: what to engrave", excerpt: "Ideas for the moments worth marking.", date: "Coming soon" },
-  { title: "Caring for your gold-tone jewellery", excerpt: "Keep your charms glowing for years.", date: "Coming soon" },
+  {
+    title: "How to choose charms that tell your story",
+    excerpt: "A gentle guide to building a bracelet that means something.",
+    date: "Coming soon",
+  },
+  {
+    title: "Behind the bench: a day in the studio",
+    excerpt: "From sketch to finished piece — how a charm is made.",
+    date: "Coming soon",
+  },
+  {
+    title: "Gifting a charm: what to engrave",
+    excerpt: "Ideas for the moments worth marking.",
+    date: "Coming soon",
+  },
+  {
+    title: "Caring for your gold-tone jewellery",
+    excerpt: "Keep your charms glowing for years.",
+    date: "Coming soon",
+  },
 ];
 
 export const Route = createFileRoute("/journal")({
@@ -34,15 +50,22 @@ function JournalComponent() {
           {posts.map((post, i) => (
             <Reveal key={post.title} delay={(i % 2) * 120}>
               <div className="border border-espresso/10 bg-cream p-8">
-                <p className="font-sans text-[0.6rem] uppercase tracking-[0.25em] text-gold">{post.date}</p>
+                <p className="font-sans text-[0.6rem] uppercase tracking-[0.25em] text-gold">
+                  {post.date}
+                </p>
                 <h2 className="mt-4 font-display text-2xl text-espresso">{post.title}</h2>
-                <p className="mt-3 font-sans text-sm font-light leading-relaxed text-gold">{post.excerpt}</p>
+                <p className="mt-3 font-sans text-sm font-light leading-relaxed text-gold">
+                  {post.excerpt}
+                </p>
               </div>
             </Reveal>
           ))}
         </div>
         <div className="mt-14 text-center">
-          <Link to="/shop" className="hairline-link font-sans text-[0.62rem] uppercase tracking-[0.3em] text-espresso">
+          <Link
+            to="/shop"
+            className="hairline-link font-sans text-[0.62rem] uppercase tracking-[0.3em] text-espresso"
+          >
             Browse the collection
           </Link>
         </div>
